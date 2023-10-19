@@ -1,15 +1,19 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom"
+import './Navbar.css'
+
+
 
 function Navbar() {
   const { loginWithRedirect, logout,isAuthenticated,user } = useAuth0();
 
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light bg-custom">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
+      <nav class="navbar navbar-expand-lg navbar navbar-light bg-light bg-custom">
+        <Link class="navbar-brand" to="/">
+          Dashboard
+        </Link>
         <button
           class="navbar-toggler"
           type="button"
@@ -25,20 +29,20 @@ function Navbar() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">
+              <Link class="nav-link" to="/">
                 Home
                 <span class="sr-only">(current)</span>
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.jsp">
+              <Link class="nav-link" to="/login">
                 Login
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.jsp">
+              <Link class="nav-link" to="/register">
                 Register
-              </a>
+              </Link>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -48,14 +52,14 @@ function Navbar() {
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
               Search
             </button>
 
           
               {
                 isAuthenticated && (
-                  <ul>
+                  <ul class="nav-item">
                   <div>
                     {/* <img src={user.picture} alt={user.name} /> */}
                     <h2>{user.name}</h2>
@@ -68,7 +72,7 @@ function Navbar() {
             <ul>
               {isAuthenticated ? (
                 <ul>
-                  <button
+                  <button class="btn btn-outline-danger my-2 my-sm-0 nav-item"
                     onClick={() =>
                       logout({
                         logoutParams: { returnTo: window.location.origin },

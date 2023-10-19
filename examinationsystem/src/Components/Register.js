@@ -1,12 +1,20 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+
+	const navigate=useNavigate();
+	const handleSubmit=(e)=>{
+	  e.preventDefault()
+	  navigate('/login')
+	}
+   
   return (
     <>
     <div>
 
     
-	<div class="container">
+	<div class="container" onSubmit={handleSubmit}>
 		<div class="row mt-4">
 			<div class="col-md-4 offset-md-4">
 				<div class="card">
