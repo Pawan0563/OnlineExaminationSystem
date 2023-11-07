@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar navbar-light bg-light bg-custom">
-        <Link class="navbar-brand" to="/">
+        <Link class="navbar-brand" to="/dashboard">
           Dashboard
         </Link>
         <button
@@ -29,21 +29,27 @@ function Navbar() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <Link class="nav-link" to="/">
+              <Link class="nav-link" to="/home">
                 Home
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/login">
-                Login
+            
+            <li class="nav-item active">
+              <Link class="nav-link" to="/service">
+                Service
+                <span class="sr-only">(current)</span>
               </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/register">
-                Register
+            
+            <li class="nav-item active">
+              <Link class="nav-link" to="/aboutus">
+                AboutUs
+                <span class="sr-only">(current)</span>
               </Link>
             </li>
+            
+            
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input
@@ -55,7 +61,16 @@ function Navbar() {
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
               Search
             </button>
-
+            <ul class="nav-item">
+              <Link class="nav-link" to="/lo">
+                Login
+              </Link>
+            </ul>
+            <ul class="nav-item">
+              <Link class="nav-link" to="/regist">
+                Register
+              </Link>
+            </ul>
           
               {
                 isAuthenticated && (
