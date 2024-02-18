@@ -3,7 +3,7 @@
 import axios from "axios";
 
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 import style from "../StudentDashboard.module.css";
 
@@ -105,10 +105,11 @@ function Test() {
        };
  
         await axios.post("http://localhost:3333/result" , data);
-        history.push("/StudentDashboard/Result");
+       // history.push("/StudentDashboard/Result");
+        Navigate.push("/StudentDashboard/Result");
     }
 
-     let history = useHistory();
+    // let history = useHistory();
 
     return (
         <>

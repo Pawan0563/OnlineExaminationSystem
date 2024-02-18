@@ -1,15 +1,15 @@
-import React from 'react'
-import './Home.css'
+// import React from 'react'
+// import './Home.css'
 
-function Home() {
-  return (
-    <div >
-      <h1 className='bg'>
+// function Home() {
+//   return (
+//     <div >
+//       <h1 className='bg'>
         
-      </h1>
+//       </h1>
       
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default Home
+// export default Home

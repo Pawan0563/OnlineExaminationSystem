@@ -11,11 +11,11 @@
     function Home(){
         return(
             <>
-               <div id={style.header}>
+               {/* <div id={style.header}>
                    <div id={style.headerHeadingBox}>
                         <h3>Online Exam System</h3> 
                     </div>
-                </div>
+                </div> */}
 
               <div id={style.div1}>
                   <img src={pic1} alt="" />

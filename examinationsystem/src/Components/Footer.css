@@ -1,0 +1,19 @@
+.footer {
+    background-color: green;
+    border-top: 2px solid red;
+    /* position: fixed; */
+    width: 100%;
+    bottom: 0;
+    color: rgb(11, 10, 10);
+    font-size: 25px;
+}
+ .footer1 {
+    background-color: green;
+    border-top: 2px solid red;
+    /* position: fixed; */
+    width: 100%;
+    bottom: 0;
+    color: rgb(21, 20, 20);
+    font-size: 25px;
+} 
+

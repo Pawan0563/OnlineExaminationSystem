@@ -4,11 +4,12 @@
 
   import {NavLink} from "react-router-dom";
 
-  import { useState } from "react";
+  import { useState } from "react";     
 
   import axios from "axios";
+  import { useNavigate } from "react-router-dom";
 
-  import {useHistory} from "react-router-dom";
+//   import {usenavigate} from "react-router-dom";
 
 
      function AdminLogin(){
@@ -26,18 +27,20 @@
                   [e.target.name] : e.target.value
               },[]);
         }
-        let history = useHistory();
+         //let history = useHistory();
+        const navigate = useNavigate()
+
   
          async function login(e){
-             const value = await axios.get("http://localhost:3333/admin"); 
+             const value = await axios.get("http://localhost:8080/admin"); 
 
-            //  console.log(value.data[0].admin_name);
-            //  console.log(admin.admin_name);
+             console.log(value.data[0].admin_name);
+             console.log(admin.admin_name);
              if(value.data[0].admin_name === admin.admin_name)
              {
                 if(value.data[0].admin_password === admin.admin_password){
                     alert("success");
-                    history.push("/AdminDashboard");
+                    navigate.push("/AdminDashboard");
                 }
                 else{
                     alert("Wrong Password");

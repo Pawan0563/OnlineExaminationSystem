@@ -10,9 +10,9 @@ function Navbar() {
 
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar navbar-light bg-light bg-custom">
+      <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark ">
         <Link class="navbar-brand" to="/dashboard">
-          Dashboard
+          <h3>Online Examination System</h3>
         </Link>
         <button
           class="navbar-toggler"
@@ -61,7 +61,7 @@ function Navbar() {
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
               Search
             </button>
-            <ul class="nav-item">
+             <ul class="nav-item">
               <Link class="nav-link" to="/lo">
                 Login
               </Link>
@@ -70,7 +70,7 @@ function Navbar() {
               <Link class="nav-link" to="/regist">
                 Register
               </Link>
-            </ul>
+            </ul> 
           
               {
                 isAuthenticated && (
