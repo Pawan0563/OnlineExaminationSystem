@@ -33,7 +33,7 @@
                   </div>
 
                   <div  className ={style.div3}>
-                    <NavLink  to="/AdminLogin">
+                    <NavLink  to="/FacultyLogin">
                        <img src={pic3} alt="" />
                        <span>Admin</span>
                      </NavLink> 

@@ -14,7 +14,8 @@ import Lo from "./Components/Lo";
 import Dashboard from "./Components/MainDashboard/Dashboard"
 import Home from "./Components/HomeComponent/Home";
 //import Dashboard from "./Components/Dashboard";
-import AdminLogin from "./Components/AdminComponent/AdminLogin/AdminLogin";
+// import FacultyLogin from "./Components/FacultyComponent/FacultyLogin";
+import FacultyLogin from "./Components/FacultyComponent/FacultyLogin/FacultyLogin"
 import StudentLogin from "./Components/StudentComponent/StudentLogin/StudentLogin"
 import StudentSignup from "./Components/StudentComponent/StudentSignup/StudentSignup"
 import StudentDashboard from "./Components/StudentComponent/StudentDashboard/StudentDashboard";
@@ -39,7 +40,8 @@ function App() {
         <Route path="/regist" element={<Regist />}></Route>
         <Route path="/lo" element={<Lo />}></Route>
          <Route path="/home" element={<Home/>}></Route> 
-         <Route path="/AdminLogin" element={<AdminLogin/>}></Route>
+         <Route path="/FacultyLogin" element={<FacultyLogin/>}></Route>
+
         <Route path="/StudentLogin" element={<StudentLogin/>}></Route> 
         <Route path="/StudentSignup" element={<StudentSignup/>}></Route> 
         <Route path="/StudentDashboard" element={<StudentDashboard/>}></Route> 
