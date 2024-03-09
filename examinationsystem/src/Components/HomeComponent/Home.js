@@ -1,8 +1,9 @@
 
  import style from "./Home.module.css";
- import pic1 from "../../Images/1.png";
- import pic2 from "../../Images/2.png";
- import pic3 from "../../Images/3.jpg";
+ import pic0 from "../../Images/1.png"
+ import pic1 from "../../Images/studentlogo.jpg";
+ import pic2 from "../../Images/facultylogo.png";
+ import pic3 from "../../Images/adminlogo.png";
 
  import {NavLink} from "react-router-dom";
 
@@ -18,8 +19,8 @@
                 </div> */}
 
               <div id={style.div1}>
-                  <img src={pic1} alt="" />
-                  <span>Online Exam</span>
+                  <img src={pic0} alt="" />
+                  <span>Online Examination System</span>
               </div>
 
 
@@ -27,13 +28,19 @@
             
                   <div className ={style.div3}>
                      <NavLink exact  to="/StudentLogin">
-                        <img src={pic2} alt="" />
+                        <img src={pic1} alt="" />
                         <span>Student</span>
                      </NavLink>
                   </div>
 
                   <div  className ={style.div3}>
                     <NavLink  to="/FacultyLogin">
+                       <img src={pic2} alt="" />
+                       <span>Faculty</span>
+                     </NavLink> 
+                  </div>
+                  <div  className ={style.div3}>
+                    <NavLink  to="/AdminLogin">
                        <img src={pic3} alt="" />
                        <span>Admin</span>
                      </NavLink> 

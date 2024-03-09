@@ -6,6 +6,7 @@
 
 
     import style from "../SubjectComponent/Subject.module.css";
+import baseUrl from "../../../baseUrl";
 
     function Exam(){
 
@@ -30,8 +31,8 @@
       useEffect(()=>{
          
          async function getAllExam(){
-             let value = await axios.get("http://localhost:3333/Exam");
-             setExams(value.data);
+            let value = await axios.get(`${baseUrl}/exam`);
+            setExams(value.data);
             //  console.log(exams);
          }
              getAllExam();
@@ -63,7 +64,7 @@
     }
 
     async function handleAddNewExam(){
-        await axios.post("http://localhost:3333/Exam" , exam);
+        await axios.post(`${baseUrl}/exam` , exam);
         setStatus(true);
     }
 
@@ -76,8 +77,8 @@
 
        useEffect(() => {
            async function getAllQuestions(){
-               let value = await axios.get("http://localhost:3333/question");
-               setQuestions(value.data);
+            let value = await axios.get(`${baseUrl}/question`);
+            setQuestions(value.data);
             }
             getAllQuestions();
        },[])
@@ -93,11 +94,11 @@
             {
                 if( parseInt( questions[i].exam_id) === parseInt( id )){
                     // console.log(questions[i].id);
-                    await axios.delete(`http://localhost:3333/question/${questions[i].id}`);
+                    await axios.delete(`${baseUrl}/question/${questions[i].id}`);
+
                 } 
             }
-            await axios.delete(`http://localhost:3333/exam/${id}`);
-            setStatusDeleteExam(true);
+            await axios.delete(`${baseUrl}/exam/${id}`);            setStatusDeleteExam(true);
        }
 
       if(status) return <Exam />
@@ -131,15 +132,15 @@
                                            <td>{data.exam_date}</td>
                                            <td>{data.exam_level}</td>
                                            <td>
-                                               <NavLink exact to={`/AdminDashboard/Exam/Details/${data.id}`}>
+                                               <NavLink exact to={`/FacultyDashboard/Exam/Details/${data.id}`}>
                                                  <button>Details</button>  
                                                </NavLink> 
 
-                                          <NavLink exact to={`/AdminDashboard/Exam/ViewQuestion/${data.id}`}>
+                                          <NavLink exact to={`/FacultyDashboard/Exam/ViewQuestion/${data.id}`}>
                                                  <button>View Question</button>  
                                                </NavLink> 
 
-                                             <NavLink exact to={`/AdminDashboard/Exam/AddQuestion/${data.id}`}>
+                                             <NavLink exact to={`/FacultyDashboard/Exam/AddQuestion/${data.id}`}>
                                                  <button>Add Question</button>  
                                                </NavLink> 
 

@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #efb9b9;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px;
+  width: 300px;
+  /* Default width for larger screens */
+  box-shadow: 30px;
+
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.card-description {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+
+  /* Adjustments for smaller screens */
+  .card {
+    width: 100%;
+    /* Occupy full width on smaller screens */
+  }
+}

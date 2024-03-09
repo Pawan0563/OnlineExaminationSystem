@@ -1,0 +1,33 @@
+.card {
+    width: 300px; /* Card width */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide overflowing content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow */
+    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+  }
+  
+  .card-image {
+    width: 100%; /* Image width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space */
+  }
+  
+  .card-content {
+    padding: 16px; /* Padding */
+  }
+  
+  .card-title {
+    margin: 0 0 8px; /* Bottom margin */
+    font-size: 1.25rem; /* Title font size */
+  }
+  
+  .card-description {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Description font size */
+  }
+  

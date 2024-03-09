@@ -6,6 +6,7 @@
      import axios from "axios";
 
      import {NavLink} from "react-router-dom";
+import baseUrl from "../../../baseUrl";
   
 
      function Subject(){
@@ -14,7 +15,7 @@
 
           useEffect(() => {
               async function getAllSubject(){
-                  let value = await axios.get("http://localhost:3333/subject");
+                  let value = await axios.get(`${ baseUrl}/subject`);
                   setAllSubject(value.data);
               }
               getAllSubject();

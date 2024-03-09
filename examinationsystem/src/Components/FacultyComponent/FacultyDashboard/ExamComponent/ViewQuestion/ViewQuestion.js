@@ -1,49 +1,45 @@
+import React, { useState, useEffect } from "react";
 
-      import React, {useState , useEffect} from "react";
+import { useParams, useHistory, useNavigate } from "react-router-dom";
 
-      import { useParams , useHistory } from "react-router-dom";
+import axios from "axios";
 
-      import axios from "axios";
-     
+import style from "../../SubjectComponent/Subject.module.css";
+import baseUrl from "../../../../baseUrl";
 
-     import style from "../../SubjectComponent/Subject.module.css";
+function ViewQuestion() {
+  //  ---------------------- add Subject & close buttton working  -------------------------------------
 
-     function ViewQuestion(){
+  const [display, setDisplay] = useState({
+    display: "none",
+  });
 
-//  ---------------------- add Subject & close buttton working  -------------------------------------
-       
-        const [display , setDisplay]  = useState({
-            display:"none"
-        });
+  function handleEditQuestion(questionId) {
+    setDisplay({ display: "block" });
+    setDataInInputField(questionId);
+  }
 
-         function handleEditQuestion(questionId)
-         {
-            setDisplay({display:"block"});
-             setDataInInputField(questionId);
-         }
+  function handleClose() {
+    setDisplay({ display: "none" });
+  }
 
-         function handleClose(){
-             setDisplay({display:"none"});
-         }
+  const { id } = useParams();
 
-         const {id} = useParams();
+  //  ---------------------- Fetching All Questions -------------------------------------
 
-//  ---------------------- Fetching All Questions -------------------------------------
-    
-      const [questions , setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
 
-      useEffect(() => {
-          async function getAllQuestions(){
-            let value = await axios.get("http://localhost:3333/question");
-            setQuestions(value.data);
-          } 
-          getAllQuestions();
-      },[])
+  useEffect(() => {
+    async function getAllQuestions() {
+      let value = await axios.get(`${baseUrl}/exam/${id}/question`);
+      setQuestions(value.data);
+    }
+    getAllQuestions();
+  }, []);
 
+  //  ---------------------- handling text field -------------------------------------
 
-//  ---------------------- handling text field -------------------------------------
-
-  const [updatedQ , setUpdatedQ] = useState({
+  const [updatedQ, setUpdatedQ] = useState({
     question_name: "",
     option_one: "",
     option_two: "",
@@ -51,174 +47,184 @@
     option_four: "",
     question_answer: "",
     exam_id: id,
-    subject_name:""
+    subject_name: "",
   });
 
+  function onTextFieldChange(e) {
+    setUpdatedQ({
+      ...updatedQ,
+      [e.target.name]: e.target.value,
+    });
+  }
 
-   function onTextFieldChange(e){
-        setUpdatedQ({
-            ...updatedQ,
-            [e.target.name] : e.target.value
-        })
-   }
+  //  ---------------------- Showing data in text field -------------------------------------
 
+  // Id of current question clicked
+  const [qId, setQId] = useState();
 
+  function setDataInInputField(questionId) {
+    setQId(questionId);
 
+    for (let i = 0; i < questions.length; i++) {
+      if (parseInt(questions[i].id) === parseInt(questionId)) {
+        setUpdatedQ(questions[i]);
+      }
+    }
+  }
+  // -----------------------------------------------------------------------------------------
 
+  const [check, setCheck] = useState();
 
-//  ---------------------- Showing data in text field -------------------------------------
+  async function updateQuestion() {
+    await axios.put(`${baseUrl}/question/${qId}`, updatedQ);
+    setCheck(true);
+  }
 
- // Id of current question clicked
-      const [qId , setQId] = useState();
+  // ----------------------------------------------------------------------------------------
 
-     
-              function setDataInInputField(questionId){
-                  setQId(questionId);
+  // let history = useHistory();
+  const navigate = useNavigate();
 
-                 for(let i=0; i<questions.length ; i++)
-                 {
-                     if( parseInt( questions[i].id) === parseInt( questionId )) {
-                         setUpdatedQ(questions[i]);
-                     }
-                 }
-             }
-// -----------------------------------------------------------------------------------------
-    
-    const [check , setCheck] = useState();
-    
+  function handleGoBack() {
+    //history.push("/AdminDashboard/Exam");
+    navigate("/FacultyDashboard/Exam");
+  }
+  // ----------------------------------------------------------------------------------------
 
-     async function updateQuestion(){
-          await axios.put(`http://localhost:3333/question/${qId}` , updatedQ);
-          setCheck(true);
-     }
+  const [d, setD] = useState();
 
-// ----------------------------------------------------------------------------------------
+  async function deleteQuestion(id) {
+    await axios.delete(`${baseUrl}/question/${id}`);
+    setD(true);
+  }
 
-    let history = useHistory();
- 
-     function handleGoBack(){
-         history.push("/AdminDashboard/Exam");
-     }
- // ----------------------------------------------------------------------------------------
- 
-    const [d , setD] = useState();
+  if (check) return <ViewQuestion />;
 
-     async function deleteQuestion(id){
-         await axios.delete(`http://localhost:3333/question/${id}`);
-         setD(true);
-     }
-  
+  if (d) return <ViewQuestion />;
 
-       if(check) return <ViewQuestion />;
+  return (
+    <>
+      <div id={style.displayHeadingBox}>
+        <h2>Question List</h2>
+      </div>
 
-       if(d) return <ViewQuestion />;
+      <div id={style.tableBox}>
+        <table>
+          <thead>
+            <tr>
+              <th id={style.center}>Question Name</th>
+              <th id={style.center}>Option one</th>
+              <th id={style.center}>Option two</th>
+              <th id={style.center}>Option three</th>
+              <th id={style.center}>Option four</th>
+              <th id={style.center}>Question Answer</th>
+              <th id={style.center}>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {questions.map((data, i) => {
+              if (parseInt(data.exam_id) === parseInt(id)) {
+                return (
+                  <tr key={i}>
+                    <td>{data.question_name}</td>
+                    <td>{data.option_one}</td>
+                    <td>{data.option_two}</td>
+                    <td>{data.option_three}</td>
+                    <td>{data.option_four}</td>
+                    <td>{data.question_answer}</td>
+                    <td>
+                      <button onClick={() => handleEditQuestion(data.id)}>
+                        Edit
+                      </button>
+                      <button onClick={() => deleteQuestion(data.id)}>
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              }
 
-      
+              return <React.Fragment key={i}></React.Fragment>;
+            })}
+          </tbody>
+        </table>
+      </div>
 
-         return (
-             <>
-                <div id={style.displayHeadingBox}> 
-                            <h2>Question List</h2>     
-                         </div>
+      <div id={style.addSubjectBox}>
+        <button onClick={handleGoBack}>Go Back</button>
+      </div>
 
-                     <div id={style.tableBox}>
-                         <table>
-                            <thead >
-                               <tr>
-                                  <th id={style.center}>Question Name</th>
-                                  <th id={style.center}>Option one</th>
-                                  <th id={style.center}>Option two</th>
-                                  <th id={style.center}>Option three</th>
-                                  <th id={style.center}>Option four</th>
-                                  <th id={style.center}>Question Answer</th>
-                                  <th id={style.center}>Options</th>
-                               </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    questions.map((data , i) => {
-                                        if(parseInt(data.exam_id) === parseInt( id )) {
-                                            return(
-                                                <tr key={i}>
-                                                  <td>{data.question_name}</td>
-                                                  <td>{data.option_one}</td>
-                                                  <td>{data.option_two}</td>
-                                                  <td>{data.option_three}</td>
-                                                  <td>{data.option_four}</td>
-                                                  <td>{data.question_answer}</td>
-                                                  <td>
-                                                    <button onClick={()=>handleEditQuestion(data.id)}>Edit</button>
-                                                    <button  onClick={()=>deleteQuestion(data.id)}>Delete</button>
-                                                  </td>
-                                              </tr>
-                                            );
-                                        }
-                                       
+      <div id={style.addBox} style={display}>
+        <label>Enter Question </label>
+        <input
+          value={updatedQ.question_name}
+          onChange={(e) => onTextFieldChange(e)}
+          name="question_name"
+          type="text"
+          placeholder="Enter Question "
+        />
 
-                                        return <React.Fragment key={i}></React.Fragment>
-                                    })
-                                }
-                               
-                            </tbody>
-                         </table>
-                     </div>
+        <label>Enter Option A </label>
+        <input
+          value={updatedQ.option_one}
+          onChange={(e) => onTextFieldChange(e)}
+          name="option_one"
+          type="text"
+          placeholder="Enter Option A"
+        />
 
-                    <div id={style.addSubjectBox}>
-                       <button onClick={handleGoBack}>Go Back</button>
-                   </div>
+        <label>Enter Option B </label>
+        <input
+          value={updatedQ.option_two}
+          onChange={(e) => onTextFieldChange(e)}
+          name="option_two"
+          type="text"
+          placeholder="Enter Option B"
+        />
 
-                   
-                   <div id={style.addBox} style={display}>   
+        <label>Enter Option C </label>
+        <input
+          value={updatedQ.option_three}
+          onChange={(e) => onTextFieldChange(e)}
+          name="option_three"
+          type="text"
+          placeholder="Enter Option C"
+        />
 
-                        <label>Enter Question </label>
-                       <input value={updatedQ.question_name} 
-                       onChange={(e) => onTextFieldChange(e)}
-                       name="question_name"
-                       type="text" placeholder="Enter Question " /> 
+        <label>Enter Option D </label>
+        <input
+          value={updatedQ.option_four}
+          onChange={(e) => onTextFieldChange(e)}
+          name="option_four"
+          type="text"
+          placeholder="Enter Option D"
+        />
 
-                        <label >Enter Option A </label>
-                       <input value={updatedQ.option_one}  
-                       onChange={(e) => onTextFieldChange(e)}
-                       name="option_one"
-                       type="text" placeholder="Enter Option A" /> 
+        <label>Enter Question Answer </label>
+        <input
+          value={updatedQ.question_answer}
+          onChange={(e) => onTextFieldChange(e)}
+          name="question_answer"
+          type="text"
+          placeholder="Enter Answer"
+        />
 
-                        <label >Enter Option B </label>
-                        <input  value={updatedQ.option_two} 
-                        onChange={(e) => onTextFieldChange(e)}
-                        name="option_two"
-                        type="text" placeholder="Enter Option B" /> 
+        <label>Enter Subject </label>
+        <input
+          value={updatedQ.subject_name}
+          onChange={(e) => onTextFieldChange(e)}
+          name="subject_name"
+          type="text"
+          placeholder="Enter Subject"
+        />
 
-                        <label >Enter Option C </label>
-                       <input  value={updatedQ.option_three}  
-                       onChange={(e) => onTextFieldChange(e)}
-                       name="option_three"
-                        type="text" placeholder="Enter Option C" /> 
+        <div id={style.buttonBox}>
+          <button onClick={updateQuestion}>Update Question</button>
+          <button onClick={handleClose}>Close</button>
+        </div>
+      </div>
+    </>
+  );
+}
 
-                        <label >Enter Option D </label>
-                       <input  value={updatedQ.option_four}  
-                       onChange={(e) => onTextFieldChange(e)} 
-                       name="option_four"
-                       type="text" placeholder="Enter Option D" /> 
-
-                        <label >Enter Question Answer </label>
-                       <input  value={updatedQ.question_answer}  
-                       onChange={(e) => onTextFieldChange(e)}
-                       name="question_answer"
-                       type="text" placeholder="Enter Answer" />  
-
-                        <label >Enter Subject </label>
-                       <input  value={updatedQ.subject_name} 
-                       onChange={(e) => onTextFieldChange(e)} 
-                       name="subject_name"
-                       type="text" placeholder="Enter Subject" />  
-
-                       <div id={style.buttonBox}>
-                         <button onClick={updateQuestion} >Update Question</button>
-                         <button onClick={handleClose} >Close</button>
-                       </div>
-                   </div>
-             </>
-         );
-     }
-
-     export default ViewQuestion;
+export default ViewQuestion;

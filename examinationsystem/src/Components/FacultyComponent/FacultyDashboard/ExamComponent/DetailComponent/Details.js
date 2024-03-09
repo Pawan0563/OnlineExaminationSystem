@@ -4,7 +4,8 @@
    import axios from "axios";
 
    import {useEffect , useState} from "react";
-   import {useHistory , useParams} from "react-router-dom";
+   import { useNavigate, useParams} from "react-router-dom";
+import baseUrl from "../../../../baseUrl";
 
     
     function Details(){
@@ -24,7 +25,7 @@
         useEffect(() => {
           
              async function getExamDetails(){
-                const value = await axios.get(`http://localhost:3333/Exam/${id}`);
+                const value = await axios.get(`${baseUrl}/exam/${id}`);
                 setExam(value.data);
              }
              getExamDetails();
@@ -32,10 +33,13 @@
 
    // -------------------------Go back function---------------------------------------
      
-      let history = useHistory();
+     // let history = useHistory();
+     const navigate=useNavigate();
     
       function handleGoBack(){
-          history.push("/AdminDashboard/Exam");
+          //history.push("/AdminDashboard/Exam");
+          navigate("/FacultyDashboard/Exam")
+
       }
 
 

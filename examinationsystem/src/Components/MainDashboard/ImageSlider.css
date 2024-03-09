@@ -1,0 +1,6 @@
+@media (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    .imageSlider {
+      width: 100%; /* Occupy full width on smaller screens */
+    }
+}

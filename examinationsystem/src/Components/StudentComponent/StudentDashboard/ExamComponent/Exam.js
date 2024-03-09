@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useParams ,NavLink } from "react-router-dom";
 
  import style from "../StudentDashboard.module.css";
+import baseUrl from "../../../baseUrl";
 
 function Exam() {
 
@@ -14,7 +15,7 @@ function Exam() {
 
     useEffect(() => {
         async function getAllExams() {
-            let value = await axios.get("http://localhost:3333/exam");
+            let value = await axios.get(`${baseUrl}/exam`);
             setAllExam(value.data);
         }
         getAllExams();

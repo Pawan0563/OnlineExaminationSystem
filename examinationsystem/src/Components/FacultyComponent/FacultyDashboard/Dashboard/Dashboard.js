@@ -1,10 +1,12 @@
 
   
   
-   import style from "./Dashboard.module.css";
+ import style from "./Dashboard.module.css";
+ 
+import baseUrl from "../../../baseUrl";
 
    import {useState  , useEffect} from "react";
-   import { useHistory } from "react-router-dom";
+   import {  useNavigate } from "react-router-dom";
    import axios from "axios";
 
      function Dashboard()
@@ -16,39 +18,45 @@
 
             useEffect(() => {
                 async function getAllExam(){
-                    let value  = await axios.get("http://localhost:3333/exam");
+                    let value  = await axios.get(`${baseUrl}/exam`);
                     setExam("We have total " +value.data.length + " exam");
                 }
                 getAllExam();
 
 
                 async function getAllQuestions(){
-                    let value  = await axios.get("http://localhost:3333/question");
+                    let value  = await axios.get(`${baseUrl}/question`);
                     setQuestion("We have total " +value.data.length + " question");
                 }
                 getAllQuestions();
 
 
-                async function getAllUsers(){
-                    let value  = await axios.get("http://localhost:3333/user");
-                    setUser("We have total " +value.data.length + " user");
-                }
-                getAllUsers();
-            })
+            //     async function getAllUsers(){
+            //         let value  = await axios.get(`${baseUrl}/user`);
+            //         setUser("We have total " +value.data.length + " user");
+            //     }
+            //     getAllUsers();
+             })
 
  
-             let history = useHistory();
+           //  let history = useHistory();
+           const navigate=useNavigate();
 
             function showExam(){
-                 history.push("/AdminDashboard/Exam");
+                // history.push("/AdminDashboard/Exam");
+                navigate("/FacultyDashboard/Exam")
             }
 
             function showQuestions(){
-                history.push("/AdminDashboard/Question");
+              //  history.push("/AdminDashboard/Question");
+              navigate("/FacultyDashboard/Question")
+
             }
 
             function showUsers(){
-                history.push("/AdminDashboard/StudentList");
+                //history.push("/AdminDashboard/StudentList");
+                navigate("/FacultyDashboard/StudentList")
+
             }
 
 

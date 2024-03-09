@@ -6,6 +6,7 @@
    import axios from "axios";
 
    import {useEffect , useState} from "react";
+import baseUrl from "../../../baseUrl";
 
       function Question(){
 
@@ -14,7 +15,7 @@
          useEffect(() => {
 
             async function getAllQuestions(){
-               const value = await axios.get("http://localhost:3333/question");
+               const value = await axios.get(`${baseUrl}/question`);
                 setQuestions(value.data);
             }
             getAllQuestions();

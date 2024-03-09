@@ -5,6 +5,7 @@
 
    
    import style from "../SubjectComponent/Subject.module.css"
+import baseUrl from "../../../baseUrl";
    
 
 
@@ -15,7 +16,7 @@
         useEffect(()=>{
            
            async function getAllResults(){
-               let value = await axios.get("http://localhost:3333/result");
+               let value = await axios.get(`${baseUrl}/result`);
                setResults(value.data);
            }
                getAllResults();

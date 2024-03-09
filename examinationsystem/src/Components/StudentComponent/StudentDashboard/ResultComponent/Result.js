@@ -5,6 +5,7 @@
 
    
    import style from "../StudentDashboard.module.css";
+import baseUrl from "../../../baseUrl";
 
 
 function Result() {
@@ -13,7 +14,7 @@ function Result() {
 
      useEffect(()=>{    
         async function getAllResults(){
-            let value = await axios.get("http://localhost:3333/result");
+            let value = await axios.get(`${baseUrl}/result`);
             setResults(value.data);
         }
             getAllResults();

@@ -4,6 +4,7 @@
    import axios from "axios";
 
    import {NavLink} from "react-router-dom";
+   import baseUrl from "../../../baseUrl";
 
    import style from "../SubjectComponent/Subject.module.css";
 
@@ -13,7 +14,7 @@
 
        useEffect(()=> {
          async function getAllStudent(){
-           let value = await axios.get("http://localhost:3333/user");
+           let value = await axios.get(`${baseUrl}/user`);
            setStudents(value.data);
          }
          getAllStudent();
@@ -42,7 +43,7 @@
                                  <td>{data.user_name}</td> 
                                  <td>{data.user_email}</td> 
                                  <td>
-                                   <NavLink exact to={`/AdminDashboard/StudentList/Details/${data.id}`}>
+                                   <NavLink exact to={`/FacultyDashboard/StudentList/Details/${data.id}`}>
                                      <button>View Result</button> 
                                    </NavLink>
                                    </td>

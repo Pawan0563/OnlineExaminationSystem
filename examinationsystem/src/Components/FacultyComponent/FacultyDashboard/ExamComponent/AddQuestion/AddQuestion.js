@@ -4,9 +4,10 @@
 
       import {useState} from "react";
 
-      import {useHistory , useParams} from "react-router-dom";
+      import { useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
+import baseUrl from "../../../../baseUrl";
       
       function AddQuestion(){
 
@@ -31,16 +32,21 @@ import axios from "axios";
           }
 
            
-            let history = useHistory();
+            //let history = useHistory();
+            const navigate=useNavigate();
+          
            
             function handleGoBack(){
-                history.push(`/AdminDashboard/Exam`);
+               // history.push(`/AdminDashboard/Exam`);
+               navigate("/FacultyDashboard/Exam")
             }
 
 
             async function addnewQuestion(){
-                await axios.post("http://localhost:3333/question" , question);
-                history.push(`/AdminDashboard/Exam/ViewQuestion/${id}`);
+                await axios.post(`${baseUrl}/question` , question);
+                //history.push(`/AdminDashboard/Exam/ViewQuestion/${id}`);
+                navigate("/FacultyDashboard/Exam/ViewQuestion/${id}");
+
             }
 
 

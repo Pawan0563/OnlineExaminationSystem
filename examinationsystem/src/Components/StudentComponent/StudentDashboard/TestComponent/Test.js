@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 
 import style from "../StudentDashboard.module.css";
+import baseUrl from "../../../baseUrl";
 
 function Test() {
 
@@ -19,7 +20,7 @@ function Test() {
 
     useEffect(() => {
         async function getAllQuestions(){
-            let value = await axios.get("http://localhost:3333/question");
+            let value = await axios.get(`${baseUrl}/question`);
             setAllQuestions(value.data);
         }
         getAllQuestions();
@@ -104,7 +105,7 @@ function Test() {
          "total_Question": "5"
        };
  
-        await axios.post("http://localhost:3333/result" , data);
+        await axios.post(`${baseUrl}/result` , data);
        // history.push("/StudentDashboard/Result");
         Navigate.push("/StudentDashboard/Result");
     }

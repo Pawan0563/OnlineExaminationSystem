@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import image1 from "./Image/on1.png"
 // import image2 from "../Image/on2.png"
 // import image3 from "./Image/on3.png"
+//import "./ImageSlider.css"
 
 import image1 from "./Images/on1.png"
 import image2 from "./Images/on2.png"
@@ -19,7 +20,7 @@ function ImageSlider() {
   }, [])
 
   return (
-    <div>
+    <div className="imageSlider">
       <img width={1840} height={800} src={allImages[selectedImage]} /> <br />
       {/* <button
         onClick={() => {

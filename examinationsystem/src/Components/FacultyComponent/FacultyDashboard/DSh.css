@@ -1,0 +1,11 @@
+.cardcontainer{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+   
+   
+    
+}
+.c1{
+    color: rgb(210, 35, 198);
+}

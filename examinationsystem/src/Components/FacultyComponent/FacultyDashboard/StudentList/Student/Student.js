@@ -2,8 +2,9 @@
   
   import style from "../../SubjectComponent/Subject.module.css";
 
-  import {useParams , useHistory} from "react-router-dom";
+  import {useParams , useNavigate} from "react-router-dom";
   import React, {useState , useEffect} from "react";
+  import baseUrl from "../../../../baseUrl";
   import axios from "axios";
 
      function Student(){
@@ -17,7 +18,7 @@
          useEffect(() => {
              async function getStudentEmail(){
                  //user whose result we have to fetch
-                let value = await axios.get(`http://localhost:3333/user/${id}`);
+                let value = await axios.get(`${baseUrl}/user/${id}`);
                  setEmail(value.data.user_email);
                  
              }
@@ -27,17 +28,18 @@
 
          useEffect(() => {   
              async function getAllResult(){
-                let value = await axios.get("http://localhost:3333/result");
+                let value = await axios.get(`${baseUrl}/result`);
                 setResult(value.data);
              }
              getAllResult();
         },[])
 
 
-         const history = useHistory();
+        // const history = useHistory();
+        const nevigate=useNavigate();
 
         function handleGoBack(){ 
-            history.push("/AdminDashboard/StudentList");
+            nevigate("/FacultyDashboard/StudentList");
         }
 
          return (
