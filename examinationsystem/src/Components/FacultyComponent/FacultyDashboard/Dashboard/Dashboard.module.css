@@ -4,19 +4,22 @@
 
 
 #displayHeadingBox h1{
-    margin-left: 10px;
+    margin-left: 30px;
+    display: flex;
 }
 
 
 #box1,
 #box2,
 #box3{
-    background-color: cyan;
-    height: 90px;
+    background-color: rgb(59, 169, 25);
+    height: 200px;
     width: 32%;
     float:left;
     margin-left: 10px;
     color: white;
+    margin-top: 60px;
+    border-radius: 20px;
 }
 
 
@@ -32,7 +35,10 @@
 #box1 p,
 #box2 p,
 #box3 p{
-    font-size: large;
+    font-size: 30px;
+    color: #efeaea;
+    justify-content: center;
+    
 }
 
 
@@ -57,6 +63,7 @@
 #box1 button:hover,
 #box2 button:hover,
 #box3 button:hover{
-    color: white;
+    color: rgb(184, 35, 35);
     cursor:pointer;
+    font-size: 30px;
 }

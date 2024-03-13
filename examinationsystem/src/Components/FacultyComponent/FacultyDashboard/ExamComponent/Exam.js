@@ -6,7 +6,8 @@
 
 
     import style from "../SubjectComponent/Subject.module.css";
-import baseUrl from "../../../baseUrl";
+
+    import baseUrl from "../../../baseUrl";
 
     function Exam(){
 
@@ -31,9 +32,9 @@ import baseUrl from "../../../baseUrl";
       useEffect(()=>{
          
          async function getAllExam(){
-            let value = await axios.get(`${baseUrl}/exam`);
-            setExams(value.data);
-            //  console.log(exams);
+             let value = await axios.get(`${baseUrl}/exam`);
+             setExams(value.data);
+             //console.log(value.data[0].name);
          }
              getAllExam();
       },[]);
@@ -45,25 +46,31 @@ import baseUrl from "../../../baseUrl";
      var d =  date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() ;
      var t =  date.getHours() + ":" + date.getMinutes() +  ":" + date.getSeconds() ;
 
-      const [exam , setExam] = useState({
-        exam_name:"",
-        exam_desc:"",
-        exam_level:"",
-        exam_passMarks:"",
-        exam_totalQuestion:"",
-        exam_marks:"",
-        exam_date: d+" "+t
-    });
 
+      const [exam , setExam] = useState({
+        name:"",
+        desc:"",
+        level:"",
+        passMarks:"",
+        totalQuestion:"",
+        marks:"",
+        date: d+" "+t
+    });
+   
    function handleInput(e){
         setExam({ 
             ...exam,
             [e.target.name]: e.target.value
         });
-        //  console.log(exam);
+        // console.log(exam);
     }
 
     async function handleAddNewExam(){
+
+        setExam(
+            exam.name = {name: document.getElementById("nameFiled").value}
+        );
+
         await axios.post(`${baseUrl}/exam` , exam);
         setStatus(true);
     }
@@ -77,8 +84,8 @@ import baseUrl from "../../../baseUrl";
 
        useEffect(() => {
            async function getAllQuestions(){
-            let value = await axios.get(`${baseUrl}/question`);
-            setQuestions(value.data);
+               let value = await axios.get(`${baseUrl}/question`);
+               setQuestions(value.data);
             }
             getAllQuestions();
        },[])
@@ -95,10 +102,10 @@ import baseUrl from "../../../baseUrl";
                 if( parseInt( questions[i].exam_id) === parseInt( id )){
                     // console.log(questions[i].id);
                     await axios.delete(`${baseUrl}/question/${questions[i].id}`);
-
                 } 
             }
-            await axios.delete(`${baseUrl}/exam/${id}`);            setStatusDeleteExam(true);
+            await axios.delete(`${baseUrl}/exam/${id}`);
+            setStatusDeleteExam(true);
        }
 
       if(status) return <Exam />
@@ -112,7 +119,7 @@ import baseUrl from "../../../baseUrl";
                </div>
 
                 <div id={style.tableBox}>
-                    <table >
+                <table class="table table-success table-striped">
                         <thead >
                             <tr>
                                 <th id={style.center}>Exam Name</th>
@@ -127,20 +134,20 @@ import baseUrl from "../../../baseUrl";
                                   exams.map((data ,i) => {
                                       return(
                                         <tr key={i}>
-                                           <td>{data.exam_name}</td>
-                                           <td>{data.exam_desc}</td>
-                                           <td>{data.exam_date}</td>
-                                           <td>{data.exam_level}</td>
+                                           <td>{data.name.name}</td>
+                                           <td>{data.desc}</td>
+                                           <td>{data.date}</td>
+                                           <td>{data.level}</td>
                                            <td>
-                                               <NavLink exact to={`/FacultyDashboard/Exam/Details/${data.id}`}>
+                                               <NavLink exact to={`/AdminDashboard/Exam/Details/${data.id}`}>
                                                  <button>Details</button>  
                                                </NavLink> 
 
-                                          <NavLink exact to={`/FacultyDashboard/Exam/ViewQuestion/${data.id}`}>
+                                          <NavLink exact to={`/AdminDashboard/Exam/ViewQuestion/${data.id}`}>
                                                  <button>View Question</button>  
                                                </NavLink> 
 
-                                             <NavLink exact to={`/FacultyDashboard/Exam/AddQuestion/${data.id}`}>
+                                             <NavLink exact to={`/AdminDashboard/Exam/AddQuestion/${data.id}`}>
                                                  <button>Add Question</button>  
                                                </NavLink> 
 
@@ -161,26 +168,26 @@ import baseUrl from "../../../baseUrl";
 
                   <div id={style.addBox} style={display}>   
                      <label htmlFor="">Enter Subject Name </label>
-                     <input onChange={(e) => handleInput(e)} name="exam_name" type="text" 
+                     <input id="nameFiled" onChange={(e) => handleInput(e)} name="name" type="text" 
                      placeholder="Enter Subject Name" /> 
 
                      <label htmlFor="">Enter Exam desc </label>
-                     <input onChange={(e) => handleInput(e)} name="exam_desc"  type="text" 
+                     <input onChange={(e) => handleInput(e)} name="desc"  type="text" 
                      placeholder="Enter Exam des" /> 
 
                      <label htmlFor="">Enter Exam Level </label>
-                      <input onChange={(e) => handleInput(e)} name="exam_level"   type="text" placeholder="Enter Exam Level" /> 
+                      <input onChange={(e) => handleInput(e)} name="level"   type="text" placeholder="Enter Exam Level" /> 
 
                       <label htmlFor="">Enter Total Question </label>
-                      <input onChange={(e) => handleInput(e)} name="exam_totalQuestion"   
+                      <input onChange={(e) => handleInput(e)} name="totalQuestion"   
                       type="text" placeholder="Enter Total Question" /> 
 
                      <label htmlFor="">Enter Total Marks </label>
-                      <input onChange={(e) => handleInput(e)} name="exam_marks"   
+                      <input onChange={(e) => handleInput(e)} name="marks"   
                       type="text" placeholder="Enter Total Marks" /> 
 
                      <label htmlFor="">Enter Pass Marks </label>
-                     <input onChange={(e) => handleInput(e)} name="exam_passMarks"   
+                     <input onChange={(e) => handleInput(e)} name="passMarks"   
                      type="text" placeholder="Enter Pass Marks" /> 
 
                       <div id={style.buttonBox}>

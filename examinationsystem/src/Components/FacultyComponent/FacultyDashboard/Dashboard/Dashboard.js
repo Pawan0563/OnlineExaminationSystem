@@ -31,11 +31,11 @@ import baseUrl from "../../../baseUrl";
                 getAllQuestions();
 
 
-            //     async function getAllUsers(){
-            //         let value  = await axios.get(`${baseUrl}/user`);
-            //         setUser("We have total " +value.data.length + " user");
-            //     }
-            //     getAllUsers();
+                async function getAllUsers(){
+                    let value  = await axios.get(`${baseUrl}/users/`);
+                    setUser("We have total " +value.data.length + " user");
+                }
+                getAllUsers();
              })
 
  
@@ -63,7 +63,7 @@ import baseUrl from "../../../baseUrl";
          return(
              <>
                            <div id={style.displayHeadingBox}> 
-                               <h1>Dashboard</h1>     
+                             
                            </div>
 
                             <div id={style.box1}>

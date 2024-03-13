@@ -1,168 +1,137 @@
-import React, { useState } from 'react';
-
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBInput,
-  MDBIcon,
-}
-from 'mdb-react-ui-kit';
-import baseUrl from '../../baseUrl';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
+import { NavLink } from "react-router-dom";
+import baseUrl from "../../baseUrl";
 
 function FacultySignup() {
-
-  // const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
+  const [fname, setfName] = useState("");
+  const [lname, setlName] = useState("");
   const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
-
+  const [mobile, setMobile] = useState(""); // Added mobile state
   const [password, setPassword] = useState("");
-  const [cnfpassword, setcnfPassword] = useState("");
-  const navigate=useNavigate();
 
-
-  
   async function save(event) {
-   //const navigate=useNavigate();
-navigate("/FacultyLogin")
-    
+    event.preventDefault();
+
     try {
       await axios.post(`${baseUrl}/facultysignup`, {
-        name: name,
-        username:username,
+        firstName: fname,
+        lastName: lname,
         email: email,
-        mobile: mobile,
-        password:password,
-        cnfpassword:cnfpassword
-
+        mobile: mobile, // Include mobile in the request payload
+        password: password
       });
-      alert("User Registation Successfully");
-     
-      setName("");
-      setUsername("");
+      alert("User Registration Successfully");
+      setfName("");
+      setlName("");
       setEmail("");
-      setMobile("");
-      setPassword(""); 
-      setcnfPassword(""); 
+      setMobile(""); // Reset mobile state
+      setPassword("");
     } catch (err) {
-      alert("User Registation Failed");
+      alert("User Registration Failed");
     }
   }
+
   return (
-    <MDBContainer fluid>
+    <MDBContainer fluid className="p-4 background-radial-gradient overflow-hidden">
+      <MDBRow>
+        <MDBCol md="6" className="text-center text-md-start d-flex flex-column justify-content-center">
+          <h1 className="my-5 display-3 fw-bold ls-tight px-3" style={{ color: "red" }}>
+            Online Examination System <br />
+            <span style={{ color: "hsl(218, 81%, 75%)" }}>
+              {/* for your business */}
+            </span>
+          </h1>
+          <p className="px-3" style={{ color: "dark" }}>
+            Online Examination System is a web-based examination system where examinations are given online. Either through the internet or internet using computer system. The main goal of this online examination system is to effectively evaluate the student thoroughly through a totally automated system that not only reduce the required time but also obtain fast and accurate results. The main objective of our software is to efficiently evaluate the candidate thoroughly through a fully automated system there is no need of paper and pen. The user can write exam without going to exam center. Also website will provide good.
+          </p>
+        </MDBCol>
 
-      <MDBCard className='text-black m-3' style={{borderRadius: '85px', }}>
-        <MDBCardBody>
-          <MDBRow>
-            <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center'>
+        <MDBCol md="6" className="position-relative">
+          <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
+          <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
 
-              <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Faculty Sign up</p>
+          <MDBCard className="my-5 bg-glass">
+            <MDBCardBody className="p-5">
+              <h1 className="text-center">Faculty Registration Form</h1>
 
-              <div className="d-flex flex-row align-items-center mb-4 ">
-                <MDBIcon fas icon="user me-3" size='lg'/>
-                <MDBInput 
-                label='Your Name' 
-                id='form1'
-                 type='text'
-               required
-                 value={name}
+              <MDBRow>
+                <MDBCol col="6">
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    label="First name"
+                    required
+                    value={fname}
                     onChange={(event) => {
-                      setName(event.target.value);
+                      setfName(event.target.value);
                     }}
+                    id="form1"
+                    type="text"
                   />
-              </div>
-              <div className="d-flex flex-row align-items-center mb-4 ">
-                <MDBIcon fas icon="user me-3" size='lg'/>
-                <MDBInput 
-                label='Your Username' 
-                id='form7'
-                 type='text'
-               required
-                 value={username}
-                    onChange={(event) => {
-                      setUsername(event.target.value);
-                    }}
-                  />
-              </div>
+                </MDBCol>
 
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="envelope me-3" size='lg'/>
-                <MDBInput 
-                label='Your Email'
-                 id='form2'
-                  type='email'
-                  required
-                  value={email}
+                <MDBCol col="6">
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    label="Last name"
+                    required
+                    value={lname}
                     onChange={(event) => {
-                      setEmail(event.target.value);
+                      setlName(event.target.value);
                     }}
-                  
+                    id="form2"
+                    type="text"
                   />
-              </div>
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="envelope me-3" size='lg'/>
-                <MDBInput 
-                label='Mobile No' 
-                id='form3' 
-                type='mobile'
+                </MDBCol>
+              </MDBRow>
+
+              <MDBInput
+                wrapperClass="mb-4"
+                label="Email"
+                value={email}
                 required
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
+                id="form3"
+                type="email"
+              />
+
+              <MDBInput
+                wrapperClass="mb-4"
+                label="Mobile"
                 value={mobile}
-                    onChange={(event) => {
-                      setMobile(event.target.value);
-                    }}
-                
-                />
-              </div>
+                required
+                onChange={(event) => {
+                  setMobile(event.target.value);
+                }}
+                id="form4"
+                type="tel" // Changed type to 'tel' for mobile input
+              />
 
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="lock me-3" size='lg'/>
-                <MDBInput
-                 label='Password'  
-                  id='form4'
-                  required
-                  value={password}
-                    onChange={(event) => {
-                      setPassword(event.target.value);
-                    }}
-                  type='password'/>
-              </div>
+              <MDBInput
+                wrapperClass="mb-4"
+                label="Password"
+                value={password}
+                required
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+                id="form5"
+                type="password"
+              />
 
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="key me-3" size='lg'/>
-                <MDBInput  
-                label='Repeat your password' 
-                id='form5' 
-                 type='password' 
-                 required
-                 value={cnfpassword}
-                    onChange={(event) => {
-                      setcnfPassword(event.target.value);
-                    }}
-                 
-                 />
-              </div>
-
-
-              <MDBBtn className='mb-4' size='lg' onClick={save}>Register</MDBBtn>
-
-            </MDBCol>
-
-            <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
-              <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid/>
-            </MDBCol>
-
-          </MDBRow>
-        </MDBCardBody>
-      </MDBCard>
-
+              <MDBBtn className="w-100 mb-4" size="md" onClick={save}>
+                Sign up
+              </MDBBtn>
+              <NavLink exact to="/FacultyLogin">
+                <MDBBtn outline color="success">Login Here</MDBBtn>
+              </NavLink>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
     </MDBContainer>
   );
 }

@@ -5,7 +5,8 @@
 
    
    import style from "../SubjectComponent/Subject.module.css"
-import baseUrl from "../../../baseUrl";
+
+   import baseUrl from "../../../baseUrl";
    
 
 
@@ -18,6 +19,7 @@ import baseUrl from "../../../baseUrl";
            async function getAllResults(){
                let value = await axios.get(`${baseUrl}/result`);
                setResults(value.data);
+               //console.log(value.data[0]);
            }
                getAllResults();
         },[]);
@@ -25,11 +27,11 @@ import baseUrl from "../../../baseUrl";
         return (
             <>
                <div id={style.displayHeadingBox}> 
-                   <h2>Exam List</h2>     
+                   <h2>Result List</h2>     
                 </div>
 
-                <div id={style.tableBox}>
-                    <table>
+                <div id="table">
+                <table class="table table-striped">
                        <thead>
                            <tr>
                              <th id="center">User Email</th>
@@ -46,13 +48,13 @@ import baseUrl from "../../../baseUrl";
                                 results.map((data , i) => {
                                     return(
                                           <tr key={i}>
-                                              <td>{data.user_email}</td>
-                                              <td>{data.exam_name}</td>
-                                              <td>{data.exam_date}</td>
-                                              <td>{data.result_status}</td>
-                                              <td>{data.result_score}</td>
-                                              <td>{data.total_marks}</td>
-                                              <td>{data.total_Question}</td>
+                                              <td>{data.email.email}</td>
+                                              <td>{data.sname.name}</td>
+                                              <td>{data.edate}</td>
+                                              <td>{data.status}</td>
+                                              <td>{data.score}</td>
+                                              <td>{data.totalMarks}</td>
+                                              <td>{data.totalQuestion}</td>
                                           </tr>
                                     );
                                 })

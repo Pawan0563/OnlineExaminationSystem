@@ -1,0 +1,54 @@
+/* StudentListStyles.css */
+
+#displayHeadingBox {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #tableBox {
+    margin-top: 20px;
+  }
+  
+  #studentTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #studentTable th, #studentTable td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  #studentTable th {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  #studentTable td {
+    border-bottom: 1px solid #cccccc;
+  }
+  
+  #studentTable th, #studentTable td {
+    width: 33.33%; /* Equal width for each column */
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .viewResultButton {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 8px 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .viewResultButton:hover {
+    background-color: #0056b3;
+  }
+  

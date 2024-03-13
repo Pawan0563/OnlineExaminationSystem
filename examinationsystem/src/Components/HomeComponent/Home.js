@@ -1,4 +1,5 @@
 
+
  import style from "./Home.module.css";
  import pic0 from "../../Images/1.png"
  import pic1 from "../../Images/studentlogo.jpg";

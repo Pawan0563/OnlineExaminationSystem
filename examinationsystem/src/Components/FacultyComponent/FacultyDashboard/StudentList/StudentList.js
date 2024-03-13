@@ -1,62 +1,62 @@
 
 
-   import {useState , useEffect} from "react";
-   import axios from "axios";
+import {useState , useEffect} from "react";
+import axios from "axios";
 
-   import {NavLink} from "react-router-dom";
-   import baseUrl from "../../../baseUrl";
+import {NavLink} from "react-router-dom";
 
-   import style from "../SubjectComponent/Subject.module.css";
+import style from "../SubjectComponent/Subject.module.css";
 
-     function StudentList(){
+import baseUrl from "../../../baseUrl";
 
-       const [students , setStudents] = useState([]);
+  function StudentList(){
 
-       useEffect(()=> {
-         async function getAllStudent(){
-           let value = await axios.get(`${baseUrl}/user`);
-           setStudents(value.data);
-         }
-         getAllStudent();
-       },[])
+    const [students , setStudents] = useState([]);
 
-         return (
-             <>
-               <div id={style.displayHeadingBox}> 
-                   <h2>Student List</h2>     
-                </div>
+    useEffect(()=> {
+      async function getAllStudent(){
+        let value = await axios.get(`${baseUrl}/users/`);
+        setStudents(value.data);
+      }
+      getAllStudent();
+    },[])
 
-                <div id={style.tableBox}>
-                   <table>
-                      <thead>
-                         <tr>
-                            <th id={style.center}>User Name</th>
-                            <th id={style.center}>User Email</th>
-                            <th id={style.center}>Options</th>
-                         </tr>
-                       </thead>
-                       <tbody>
-                         {
-                           students.map((data , i) => {
-                             return(
-                              <tr key={i}>
-                                 <td>{data.user_name}</td> 
-                                 <td>{data.user_email}</td> 
-                                 <td>
-                                   <NavLink exact to={`/FacultyDashboard/StudentList/Details/${data.id}`}>
-                                     <button>View Result</button> 
-                                   </NavLink>
-                                   </td>
-                             </tr>
-                             );
-                           })
-                         }
-                           
-                        </tbody>
-                    </table>
-                </div>
-             </>
-         );
-     }
+      return (
+          <>
+            <div id={style.displayHeadingBox}> 
+                <h2>Student List</h2>     
+             </div>
 
-     export default StudentList;
+             <div id={style.tableBox}>
+             <table class="table table-striped">                   <thead>
+                      <tr>
+                         <th id={style.center}>User Name</th>
+                         <th id={style.center}>User Email</th>
+                         <th id={style.center}>Options</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        students.map((data , i) => {
+                          return(
+                           <tr key={i}>
+                              <td>{data.name}</td> 
+                              <td>{data.email}</td> 
+                              <td>
+                                <NavLink exact to={`/AdminDashboard/StudentList/Details/${data.email}`}>
+                                  <button>View Result</button> 
+                                </NavLink>
+                                </td>
+                          </tr>
+                          );
+                        })
+                      }
+                        
+                     </tbody>
+                 </table>
+             </div>
+          </>
+      );
+  }
+
+  export default StudentList;

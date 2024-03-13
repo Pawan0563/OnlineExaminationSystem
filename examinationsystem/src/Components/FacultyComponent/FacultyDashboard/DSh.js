@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../Images/logos.png";
 //import p1 from "../../../Images/1.png";
 import "./DSh.css";
+import Dashboard from "./Dashboard/Dashboard";
 //import Card from "./Card";
 
 function DSh() {
@@ -11,8 +12,13 @@ function DSh() {
     navigate("/FacultyLogin");
   }
 
+  function logout() {
+    sessionStorage.clear();
+   
+  }
+  
   return (
-    <div>
+    <>
       <nav class="navbar navbar-expand-lg navbar-light bg-light  ">
         <Link class="navbar-brand" to="#">
           <img className="logo" src={logo} alt="logo" />
@@ -35,8 +41,8 @@ function DSh() {
         >
           <ul class="navbar-nav  ">
             <li class="nav-item active  mr-5 ">
-              <Link class="nav-link " to="/FacultyDashboards">
-                <h4>Dashboard</h4>
+              <Link class="nav-link " to="/">
+                <h4>Home</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
@@ -74,7 +80,7 @@ function DSh() {
             </li>
             <li class="nav-item active mr-5 ">
               <Link class="nav-link" to="/FacultyLogin">
-                <h4>Logout</h4>
+                <h4 onClick={logout}>Logout</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
@@ -83,96 +89,14 @@ function DSh() {
       </nav>
 
 
-{/* Card Components */}
+<Dashboard/>
+    
+       
+       
+      </>
 
-      <div className="cardcontainer">
-        <div class="card c1">
-          <img
-            src="https://media.istockphoto.com/id/1398462038/photo/online-exam-or-test.webp?b=1&s=170667a&w=0&k=20&c=rPmfkbaVJ5zY_WcFe5TV9LfLGaamTIW6F-YGrC1jzmc="
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            src="https://media.istockphoto.com/id/1398462038/photo/online-exam-or-test.webp?b=1&s=170667a&w=0&k=20&c=rPmfkbaVJ5zY_WcFe5TV9LfLGaamTIW6F-YGrC1jzmc="
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            src="https://media.istockphoto.com/id/1398462038/photo/online-exam-or-test.webp?b=1&s=170667a&w=0&k=20&c=rPmfkbaVJ5zY_WcFe5TV9LfLGaamTIW6F-YGrC1jzmc="
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            src="https://media.istockphoto.com/id/1398462038/photo/online-exam-or-test.webp?b=1&s=170667a&w=0&k=20&c=rPmfkbaVJ5zY_WcFe5TV9LfLGaamTIW6F-YGrC1jzmc="
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            src="https://media.istockphoto.com/id/1398462038/photo/online-exam-or-test.webp?b=1&s=170667a&w=0&k=20&c=rPmfkbaVJ5zY_WcFe5TV9LfLGaamTIW6F-YGrC1jzmc="
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <Link to="/home" class="btn btn-primary">
-              Go somewhere
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+      
+  
   );
 }
 
