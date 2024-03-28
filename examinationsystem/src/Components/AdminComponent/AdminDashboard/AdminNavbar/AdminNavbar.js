@@ -6,6 +6,13 @@ import logo from "../../../../Images/logos.png"
 function AdminNavbar() {
  // const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
+
+ function logout() {
+  sessionStorage.clear();
+ 
+}
+
+
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light  ">
@@ -34,22 +41,28 @@ function AdminNavbar() {
             </li>
 
             <li class="nav-item active mr-5 ">
-              <Link class="nav-link" to="#">
-                <h4>ManageFaculties</h4>
+              <Link class="nav-link" to="/AdminDashboard">
+                <h4>Dashboard</h4>
+                <span class="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li class="nav-item active mr-5 ">
+              <Link class="nav-link" to="/ManageFaculty">
+                <h4>ManageFaculty</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
 
             <li class="nav-item active mr-5 ">
-              <Link class="nav-link" to="#">
+              <Link class="nav-link" to="/ManageStudent">
                 <h4>ManageStudents</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
             
             <li class="nav-item active mr-5 ">
-              <Link class="nav-link" to="#">
-                <h4>Logout</h4>
+              <Link class="nav-link" to="/FacultyLogin">
+                <h4 onClick={logout}>Logout</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>

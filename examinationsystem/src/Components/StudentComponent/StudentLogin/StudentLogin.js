@@ -22,7 +22,7 @@ function UserLogin() {
       const response = await axios.post(`${baseUrl}/users/userlogin`, credentials);
       if (response.data) {
         alert('Login Successful');
-        navigate('/StudentDashboard');
+        navigate('/StudentDsh');
       } else {
 
         alert('Login Failed: Incorrect email or password');

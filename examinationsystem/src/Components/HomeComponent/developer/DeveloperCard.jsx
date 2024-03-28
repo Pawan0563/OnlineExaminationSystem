@@ -1,5 +1,5 @@
 import React from "react"
-import { developer } from "../../dummydata"
+import { developer } from "../../../dummydata"
 
 const app = () => {
   return (

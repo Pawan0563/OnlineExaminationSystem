@@ -3,9 +3,10 @@
 import axios from "axios";
 
 import React, { useState, useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useHistory, useNavigate, useParams } from "react-router-dom";
 
 import style from "../StudentDashboard.module.css";
+
 import baseUrl from "../../../baseUrl";
 
 function Test() {
@@ -20,11 +21,12 @@ function Test() {
 
     useEffect(() => {
         async function getAllQuestions(){
-            let value = await axios.get(`${baseUrl}/question`);
+            let value = await axios.get(`${baseUrl}/exam/${id}/question`);
             setAllQuestions(value.data);
+            //console.log(value.data);
         }
         getAllQuestions();
-    },[]);
+    },[id]);
 
     // ---------------------------------------------------------
     
@@ -63,9 +65,7 @@ function Test() {
     {
         for(let i=0; i<allQuestions.length ;i++)
         {
-            if(parseInt( allQuestions[i].exam_id) === parseInt( id)) {
-                 correctAnswer.push( allQuestions[i].question_answer);
-            }
+             correctAnswer.push( allQuestions[i].answer);
         }
 
 
@@ -95,23 +95,25 @@ function Test() {
         var t =  date.getHours() + ":" + date.getMinutes() +  ":" + date.getSeconds() ;
    
        let data={
-         "result_status": status,
-         "result_score": score,
-         "user_email":sessionStorage.getItem("user"),
-         "exam_date": d+" "+t,
-         "exam_name": category,
-         "total_marks": "5",
-         "exam_id": id,
-         "total_Question": "5"
+         "status": status,
+         "score": score,
+         "email":{"email":sessionStorage.getItem("user")},    // email
+         "edate": d+" "+t,
+         "sname": {"name":category},   // --  subject name
+         "totalMarks": "5",
+         "examId": {"id":id},         // exam id
+         "totalQuestion": "5"
        };
+
+       //console.log(data);
  
-        await axios.post(`${baseUrl}/result` , data);
+       await axios.post(`${baseUrl}/result` , data);
        // history.push("/StudentDashboard/Result");
-        Navigate.push("/StudentDashboard/Result");
+       naviagte("/StudentDsh/Result")
     }
 
-    
-    // let history = useHistory();
+     //let history = useHistory();
+     const naviagte=useNavigate();
 
     return (
         <>
@@ -121,39 +123,37 @@ function Test() {
             {
                  
                 allQuestions.map((data , i) => {
-                    if(parseInt( data.exam_id ) === parseInt(id)){
                         count++;
                     return (
                         <div id={style.displayBoxQuestionBox} key={i}>
-                        <div id={style.divQuestion}> <span>{data.question_name}</span> </div>
+                        <div id={style.divQuestion}> <span>{data.qname}</span> </div>
         
                         <div>
-                            <input onChange={(e) => onRadioButtonChange(e)} value={data.option_one}
+                            <input onChange={(e) => onRadioButtonChange(e)} value={data.optionOne}
                             id={style.option1} name={"answer"+count}   type="radio" />  
-                            <label htmlFor="option1">{data.option_one}</label>
+                            <label htmlFor="option1">{data.optionOne}</label>
                         </div>
         
                         <div>
-                            <input onChange={(e) => onRadioButtonChange(e)} value={data.option_two}
+                            <input onChange={(e) => onRadioButtonChange(e)} value={data.optionTwo}
                             id={style.option2} name={"answer"+count} type="radio" /> 
-                            <label htmlFor="option2">{data.option_two}</label>
+                            <label htmlFor="option2">{data.optionTwo}</label>
                         </div>
         
                         <div>
-                            <input onChange={(e) => onRadioButtonChange(e)} value={data.option_three}
+                            <input onChange={(e) => onRadioButtonChange(e)} value={data.optionThree}
                             id={style.option3} name={"answer"+count}  type="radio" /> 
-                            <label htmlFor="option3">{data.option_three}</label>
+                            <label htmlFor="option3">{data.optionThree}</label>
                         </div>
         
                         <div>
-                            <input onChange={(e) => onRadioButtonChange(e)} value={data.option_four}
+                            <input onChange={(e) => onRadioButtonChange(e)} value={data.optionFour}
                             id={style.option4} name={"answer"+count}  type="radio" /> 
-                            <label htmlFor="option4">{data.option_four}</label>
+                            <label htmlFor="option4">{data.optionFour}</label>
                         </div>
                     </div>
                     );
-                  }
-                  return <React.Fragment key={i}></React.Fragment>
+                  
                 })
             }
             <div id={style.submitExam}><button onClick={submitTest}>Submit Exam</button></div>

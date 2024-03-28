@@ -14,9 +14,8 @@ function DSh() {
 
   function logout() {
     sessionStorage.clear();
-   
   }
-  
+
   return (
     <>
       <nav class="navbar navbar-expand-lg navbar-light bg-light  ">
@@ -40,12 +39,7 @@ function DSh() {
           id="navbarSupportedContent"
         >
           <ul class="navbar-nav  ">
-            <li class="nav-item active  mr-5 ">
-              <Link class="nav-link " to="/">
-                <h4>Home</h4>
-                <span class="sr-only">(current)</span>
-              </Link>
-            </li>
+           
 
             <li class="nav-item active mr-5 ">
               <Link class="nav-link" to="/FacultyDashboard/Subject">
@@ -88,15 +82,8 @@ function DSh() {
         </div>
       </nav>
 
-
-<Dashboard/>
-    
-       
-       
-      </>
-
-      
-  
+      <Dashboard />
+    </>
   );
 }
 

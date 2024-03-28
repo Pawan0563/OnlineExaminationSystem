@@ -39,22 +39,22 @@ import baseUrl from "../../../baseUrl";
              })
 
  
-           //  let history = useHistory();
+        
            const navigate=useNavigate();
 
             function showExam(){
-                // history.push("/AdminDashboard/Exam");
+               
                 navigate("/FacultyDashboard/Exam")
             }
 
             function showQuestions(){
-              //  history.push("/AdminDashboard/Question");
+       
               navigate("/FacultyDashboard/Question")
 
             }
 
             function showUsers(){
-                //history.push("/AdminDashboard/StudentList");
+             
                 navigate("/FacultyDashboard/StudentList")
 
             }
@@ -63,8 +63,8 @@ import baseUrl from "../../../baseUrl";
          return(
              <>
                            <div id={style.displayHeadingBox}> 
-                             
-                           </div>
+                            
+                          
 
                             <div id={style.box1}>
                                <p id={style.countOfExam}>{exam}</p>
@@ -80,7 +80,7 @@ import baseUrl from "../../../baseUrl";
                                   <p id={style.countOfUser}>{user}</p>
                                     <button onClick={showUsers} >View Details</button>
                               </div>
-                             
+                              </div>
              </>
          );
      }

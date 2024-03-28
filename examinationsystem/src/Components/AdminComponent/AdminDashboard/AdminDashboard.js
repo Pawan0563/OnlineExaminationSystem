@@ -10,13 +10,13 @@ function AdminDashboard() {
     <AdminCard
         title="Manage Faculty"
         
-        link="https://example.com"
+        link="/ManageFaculty"
         imageUrl="https://cdn.pixabay.com/photo/2019/09/01/06/17/board-4444443_640.jpg"
       />
     <AdminCard
         title="Manage Student"
       
-        link="https://example.com"
+        link="/ManageStudent"
         imageUrl="https://cdn.pixabay.com/photo/2019/09/01/06/17/board-4444443_640.jpg"
       />
     </div>

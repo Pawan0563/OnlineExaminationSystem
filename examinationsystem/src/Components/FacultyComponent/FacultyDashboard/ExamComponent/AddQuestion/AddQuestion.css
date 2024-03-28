@@ -1,0 +1,66 @@
+/* AddQuestion.css */
+
+.container123 {
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .displayHeadingBox123 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .addBox123 {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .addBox123 label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .addBox123 input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .buttonBox123 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .buttonBox123 button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .addBox123 {
+      padding: 10px;
+    }
+  
+    .addBox123 input[type="text"] {
+      width: calc(100% - 20px);
+    }
+  
+    .buttonBox123 {
+      margin-top: 10px;
+    }
+  
+    .buttonBox123 button {
+      padding: 8px 16px;
+      margin-right: 5px;
+    }
+  }
+  

@@ -1,5 +1,5 @@
 import React from "react"
-import { blog } from "../../../dummydata"
+import { blog } from "../../../../dummydata"
 import "./footer.css"
 
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
         <div className='container padding'>
           <div className='box logo'>
             <h1>ONLINE EXAMINATION SYSTEM</h1>
-            <p>Successful and unsuccessful people do not vary greatly in their abilities. They vary in their desires to reach their potential.</p>
+            <p>Successful and unsuccessful people do not vary greatly in their abilities.</p>
 
             <i className='fab fa-facebook-f icon'></i>
             <i className='fab fa-twitter icon'></i>
@@ -62,7 +62,7 @@ const Footer = () => {
       </footer>
       <div className='legal'>
         <p>
-        Centurion Onine Examination System  <i className='fa fa-heart'></i>  ©2023 Copyright
+        Centurion Onine Examination System  <i className='fa fa-heart'></i>  ©2024 Copyright
         </p>
       </div>
     </>

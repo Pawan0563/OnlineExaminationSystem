@@ -1,0 +1,51 @@
+.manage-student {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .manage-student input {
+    margin-bottom: 5px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .manage-student .save-button {
+    margin-top: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .manage-student .button-container {
+    margin-top: 10px;
+  }
+  
+  .manage-student .edit-button,
+  .manage-student .delete-button,
+  .manage-student .view-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .manage-student .edit-button:hover,
+  .manage-student .delete-button:hover,
+  .manage-student .view-button:hover {
+    background-color: #005f7f;
+  }
+  

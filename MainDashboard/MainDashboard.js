@@ -1,9 +1,10 @@
 import React from 'react'
 import "./Dashboard.css"
 import Footer from '../Footer'
-import ImageSlider from './ImageSlider';
-import Navbar from '../Navbar';
-import Service from './Service';
+// import ImageSlider from './ImageSlider';
+// import Navbar from '../Navbar';
+// import Service from './Service';
+import Home from '../HomeComponent/home/Home';
 //import Developer from './Developer';
 
 
@@ -16,13 +17,14 @@ function MainDashboard() {
   return (<>
      <div>
       {/* <h1>Image Slider</h1> */}
-      <Navbar/>
+      {/* <Home/> */}
+      {/* <Navbar/>
       <ImageSlider  />
-      <Service />
+      <Service /> */}
       {/* <Developer/> */}
     </div>
  
-  <Footer/>
+  {/* <Footer/> */}
   </>
   )
 }

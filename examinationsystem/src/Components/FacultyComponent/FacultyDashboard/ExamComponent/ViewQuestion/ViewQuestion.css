@@ -1,0 +1,85 @@
+/* ViewQuestion.css */
+
+.displayHeadingBox23 {
+    text-align: center;
+  }
+  
+  .tableBox23 {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
+  .tableBox23 table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tableBox23 th,
+  .tableBox23 td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .tableBox23 th {
+    background-color: #f2f2f2;
+  }
+  
+  .addSubjectBox23 {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .addBox23 {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .addBox23 label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .addBox23 input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .buttonBox23 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .buttonBox23 :hover {
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 30px;
+    background-color: rgb(194, 124, 19);
+  }
+  
+  .buttonBox23 button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    
+  }
+  
+  @media screen and (max-width: 768px) {
+    .tableBox23 {
+      overflow-x: auto;
+    }
+  
+    .tableBox23 table {
+      min-width: 800px;
+    }
+  }
+  

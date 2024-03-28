@@ -5,7 +5,8 @@ import React, { useState, useEffect } from "react";
 import { useParams ,NavLink } from "react-router-dom";
 
  import style from "../StudentDashboard.module.css";
-import baseUrl from "../../../baseUrl";
+
+ import baseUrl from "../../../baseUrl";
 
 function Exam() {
 
@@ -17,6 +18,7 @@ function Exam() {
         async function getAllExams() {
             let value = await axios.get(`${baseUrl}/exam`);
             setAllExam(value.data);
+           // console.log(value.data);
         }
         getAllExams();
     }, [])
@@ -28,14 +30,14 @@ function Exam() {
             </div>
             {
                 allExam.map((data, i) => {
-                    if(data.exam_name === category)
+                    if(data.name.name === category)
                     return (
                         <div id={style.displayBoxExamBox} key={i}>
-                            <div id={style.div1}> <span>{data.exam_name}</span> </div>
+                            <div id={style.div1}> <span>{data.name.name}</span> </div>
                             <div id={style.div2}> <span>Exam ID: {data.id}</span> </div>
-                            <div id={style.div2}> <span>Exam Description: {data.exam_desc}</span> </div>
-                            <div id={style.div3}><span>Pass Marks:{data.exam_passMarks}</span> </div>
-                            <div id={style.div4}><span>Total Marks:{data.exam_marks}</span></div>
+                            <div id={style.div2}> <span>Exam Description: {data.desc}</span> </div>
+                            <div id={style.div3}><span>Pass Marks:{data.passMarks}</span> </div>
+                            <div id={style.div4}><span>Total Marks:{data.marks}</span></div>
                             <div id={style.div5}>
                               <NavLink exact to={`/StudentDashboard/Exam/Maths/${data.id}`}>
                                  <button>Go to Exam</button>

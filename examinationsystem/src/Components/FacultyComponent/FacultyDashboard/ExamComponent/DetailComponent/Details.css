@@ -1,0 +1,62 @@
+/* Details.css */
+
+.displayHeadingBox11 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.tableBox11{
+  background-color: rgb(183, 110, 168);
+}
+.tableBox11 table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.tableBox11 th,
+.tableBox11 td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.tableBox11 th {
+  background-color: #d7adad;
+}
+
+.addSubjectBox11 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.addSubjectBox11 button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #d83131;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.addSubjectBox11 button:hover {
+  background-color: #0056b3;
+}
+
+.addSubjectBox11 button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .tableBox11 {
+    overflow-x: auto;
+  }
+
+  .tableBox11 table {
+    min-width: 800px;
+  }
+}

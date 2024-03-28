@@ -1,0 +1,78 @@
+/* Exam.css */
+
+#hd {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cc {
+    text-align: center;
+}
+
+.bb {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#addSubjectBox {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#addBox12 {
+    display: none; /* Initially hidden */
+    margin: 50px;
+}
+
+#addBox12.active {
+    display: block; /* Display when active */
+}
+
+#addBox12 label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#addBox12 input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+#buttonBox76 {
+    text-align: center;
+    
+    }
+
+    .b12{
+        margin: 40px;
+    }
+
+@media only screen and (max-width: 600px) {
+    /* Adjustments for smaller screens */
+    .bb {
+        padding: 6px 10px;
+    }
+}

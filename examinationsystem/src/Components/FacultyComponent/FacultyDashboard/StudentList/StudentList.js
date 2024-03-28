@@ -43,7 +43,7 @@ import baseUrl from "../../../baseUrl";
                               <td>{data.name}</td> 
                               <td>{data.email}</td> 
                               <td>
-                                <NavLink exact to={`/AdminDashboard/StudentList/Details/${data.email}`}>
+                                <NavLink exact to={`/FacultyDashboard/StudentList/Details/${data.email}`}>
                                   <button>View Result</button> 
                                 </NavLink>
                                 </td>

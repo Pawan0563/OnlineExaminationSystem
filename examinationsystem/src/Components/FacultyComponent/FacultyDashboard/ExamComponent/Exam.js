@@ -5,7 +5,7 @@
    import {NavLink} from "react-router-dom";
 
 
-    import style from "../SubjectComponent/Subject.module.css";
+    import "./Exam.css"
 
     import baseUrl from "../../../baseUrl";
 
@@ -114,22 +114,22 @@
 
         return (
             <>
-               <div id={style.displayHeadingBox}> 
+               <div id="hd"> 
                     <h2>Exam List</h2>     
                </div>
 
-                <div id={style.tableBox}>
+                <div id="tb">
                 <table class="table table-success table-striped">
                         <thead >
                             <tr>
-                                <th id={style.center}>Exam Name</th>
-                                <th id={style.center}>Exam Desc.</th>
-                                <th id={style.center}>Exam Creation Date</th>
-                                <th id={style.center}>Exam Level</th>
-                                <th id={style.center}>Options</th>
+                                <th className="cc">Exam Name</th>
+                                <th className="cc">Exam Desc.</th>
+                                <th className="cc">Exam Creation Date</th>
+                                <th className="cc">Exam Level</th>
+                                <th className="cc">Options</th>
                             </tr>
                           </thead>
-                          <tbody id={style.tbody}>
+                          <tbody id="tbod">
                               {
                                   exams.map((data ,i) => {
                                       return(
@@ -139,19 +139,19 @@
                                            <td>{data.date}</td>
                                            <td>{data.level}</td>
                                            <td>
-                                               <NavLink exact to={`/AdminDashboard/Exam/Details/${data.id}`}>
-                                                 <button>Details</button>  
+                                               <NavLink exact to={`/FacultyDashboard/Exam/Details/${data.id}`}>
+                                                 <button className="bb">Details</button>  
                                                </NavLink> 
 
-                                          <NavLink exact to={`/AdminDashboard/Exam/ViewQuestion/${data.id}`}>
-                                                 <button>View Question</button>  
+                                          <NavLink exact to={`/FacultyDashboard/Exam/ViewQuestion/${data.id}`}>
+                                                 <button  className="bb">View Question</button>  
                                                </NavLink> 
 
-                                             <NavLink exact to={`/AdminDashboard/Exam/AddQuestion/${data.id}`}>
-                                                 <button>Add Question</button>  
+                                             <NavLink exact to={`/FacultyDashboard/Exam/AddQuestion/${data.id}`}>
+                                                 <button className="bb">  Add Question</button>  
                                                </NavLink> 
 
-                                             <button onClick={() => deleteExam(data.id)}>Delete</button>
+                                             <button  className="bb" onClick={() => deleteExam(data.id)}>Delete</button>
                                           </td>
                                         </tr>
                                       );
@@ -162,11 +162,11 @@
                      </table>
                  </div>
 
-                 <div id={style.addSubjectBox}>
+                 <div id="addSubjectBox">
                       <button onClick={handleAddExam}>Add Exam</button>
                  </div>
 
-                  <div id={style.addBox} style={display}>   
+                  <div id="addBox12" style={display}>   
                      <label htmlFor="">Enter Subject Name </label>
                      <input id="nameFiled" onChange={(e) => handleInput(e)} name="name" type="text" 
                      placeholder="Enter Subject Name" /> 
@@ -190,9 +190,9 @@
                      <input onChange={(e) => handleInput(e)} name="passMarks"   
                      type="text" placeholder="Enter Pass Marks" /> 
 
-                      <div id={style.buttonBox}>
-                         <button onClick={handleAddNewExam} >Add</button>
-                         <button onClick= {handleCloseExam}  >Close</button>
+                      <div id="buttonBox76">
+                         <button  className="b12" onClick={handleAddNewExam} >Add</button>
+                         <button  className="b12" onClick= {handleCloseExam}  >Close</button>
                        </div>
                   </div>
             </>

@@ -41,25 +41,25 @@ function Navbar() {
             </li>
 
             <li class="nav-item active mr-5 ">
-              <Link class="nav-link" to="/aboutus">
-                <h4>Testimonial</h4>
+              <Link class="nav-link" to="/developer">
+                <h4>Developer</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
             <li class="nav-item active mr-5 ">
-              <Link class="nav-link" to="/aboutus">
+              <Link class="nav-link" to="/about">
                 <h4> About Us</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
             <li class="nav-item active mr-5 ">
-              <Link class="nav-link" to="/aboutus">
+              <Link class="nav-link" to="/contact">
                 <h4>Contect Us</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
             <li class="nav-item active mr-5 ">
-              <Link class="nav-link" to="/home">
+              <Link class="nav-link" to="/shome">
                 <h4>Sign In</h4>
                 <span class="sr-only">(current)</span>
               </Link>
