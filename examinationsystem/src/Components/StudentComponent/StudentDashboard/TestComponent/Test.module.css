@@ -1,0 +1,73 @@
+/* Test.module.css */
+
+.testContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.questionCard {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 70%; /* Adjust as needed */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.questionCard > div {
+    margin-bottom: 10px;
+}
+
+.questionCard span {
+    font-size: 24px; /* Decrease font size for smaller screens */
+}
+
+.questionCard input[type="radio"] {
+    margin-right: 10px;
+    font-size: 18px; /* Decrease font size for smaller screens */
+}
+
+.submitExam {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submitExam button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submitExam button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .questionCard {
+        padding: 15px;
+    }
+
+    .questionCard > div {
+        margin-bottom: 8px;
+    }
+
+    .questionCard span {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    .questionCard input[type="radio"] {
+        margin-right: 8px;
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}

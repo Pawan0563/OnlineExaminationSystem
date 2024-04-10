@@ -18,7 +18,7 @@ import StudentDashboard from "./Components/StudentComponent/StudentDashboard/Stu
 import FacultyDashboard from "./Components/FacultyComponent/FacultyDashboard/FacultyDashboard";
 import FacultyDashboards from "./Components/FacultyComponent/FacultyDashboard/Dashboard/Dashboard";
 import FExam from "./Components/FacultyComponent/FacultyDashboard/ExamComponent/Exam";
-import SExam from "./Components/StudentComponent/StudentDashboard/ExamComponent/Exam";
+import SExam from "./Components/StudentComponent/StudentDashboard/ExamComponent/SExam";
 import Result from "./Components/FacultyComponent/FacultyDashboard/ResultComponent/Result";
 import Result1 from "./Components/StudentComponent/StudentDashboard/ResultComponent/Result";
 import StudentList from "./Components/FacultyComponent/FacultyDashboard/StudentList/StudentList";
@@ -38,7 +38,7 @@ import ManageFaculty from "./Components/AdminComponent/ManageFaculty/ManageFacul
 import Subject1 from "./Components/StudentComponent/StudentDashboard/Subject/Subject";
 import Test from "./Components/StudentComponent/StudentDashboard/TestComponent/Test";
 import Footer from "./Components/HomeComponent/common/footer/Footer";
-import Header from "./Components/HomeComponent/common/header/Header";
+// import Header from "./Components/HomeComponent/common/header/Header";
 import About from "./Components/HomeComponent/about/About";
 import Team from "./Components/HomeComponent/team/Team"
 import Developer from "./Components/HomeComponent/developer/Developer"
@@ -135,7 +135,7 @@ function App() {
           element={<Question />}
         ></Route>
         <Route exact path="/StudentDsh/Result" component={Result}></Route>
-
+{/* 
         <Route
           exact
           path="/StudentDsh/Exam/:category"
@@ -146,7 +146,12 @@ function App() {
           exact
           path="/StudentDsh/Exam/:category/:id"
           component={Test}
-        ></Route>
+        ></Route> */}
+
+
+<Route exact path="/StudentDashboard/Exam/:category" element={<SExam/>} ></Route>
+
+<Route exact path="/StudentDashboard/Exam/:category/:id" element={<Test/>} ></Route>
 
        </Routes>
        <Footer />

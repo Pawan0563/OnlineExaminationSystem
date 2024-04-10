@@ -142,17 +142,29 @@ function AddQuestion() {
     navigate(`/Facultydashboard/Exam`);
   }
 
+  // async function addnewQuestion() {
+  //   setQuestion((prevQuestion) => ({
+  //     ...prevQuestion,
+  //     ename: id,
+  //     sname: document.getElementById("subjectField").value
+      
+  //   }));
+
+  //   await axios.post(`${baseUrl}/question`, question);
+    
+  //   navigate(`/Facultydashboard/Exam/ViewQuestion/${id}`);
+  // }
+
   async function addnewQuestion() {
-    setQuestion((prevQuestion) => ({
-      ...prevQuestion,
-      ename: id,
-      sname: document.getElementById("subjectField").value
-    }));
+    setQuestion((question.ename = { id: id }));
+
+    setQuestion(
+      (question.sname = { name: document.getElementById("subjectField").value })
+    );
 
     await axios.post(`${baseUrl}/question`, question);
     navigate(`/Facultydashboard/Exam/ViewQuestion/${id}`);
-  }
-
+}
   return (
     <>
     <div className="container123">

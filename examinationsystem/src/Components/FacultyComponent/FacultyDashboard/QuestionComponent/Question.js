@@ -1,7 +1,8 @@
-import style from "../SubjectComponent/Subject.module.css";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import baseUrl from "../../../baseUrl";
-import { useEffect, useState } from "react";
+import "./Question.css";
+// import FacultyNavbar from "../FacultyNavbar/FacultyNavbar";
 
 function Question() {
   const [questions, setQuestions] = useState([]);
@@ -20,37 +21,36 @@ function Question() {
 
   return (
     <>
-      <div id={style.displayHeadingBox}>
+    {/* <FacultyNavbar/> */}
+      <div className="questionListHeading">
         <h2>Question List</h2>
       </div>
 
-      <div id={style.tableBox}>
-      <table class="table table-striped">
+      <div className="questionTable">
+        <table className="table table-striped">
           <thead>
             <tr>
-              <th id={style.center}>Question Name</th>
-              <th id={style.center}>Option one</th>
-              <th id={style.center}>Option two</th>
-              <th id={style.center}>Option three</th>
-              <th id={style.center}>Option Four</th>
-              <th id={style.center}>Question Answer</th>
-              <th id={style.center}>Subject Name</th>
+              <th className="center">Question Name</th>
+              <th className="center">Option one</th>
+              <th className="center">Option two</th>
+              <th className="center">Option three</th>
+              <th className="center">Option Four</th>
+              <th className="center">Question Answer</th>
+              <th className="center">Subject Name</th>
             </tr>
           </thead>
-          <tbody id={style.tbody}>
-            {questions.map((data, i) => {
-              return (
-                <tr key={i}>
-                  <td>{data.qname}</td>
-                  <td>{data.optionOne}</td>
-                  <td>{data.optionTwo}</td>
-                  <td>{data.optionThree}</td>
-                  <td>{data.optionFour}</td>
-                  <td>{data.answer}</td>
-                  <td>{data.sname ? data.sname.name : "N/A"}</td> {/* Check if sname exists */}
-                </tr>
-              );
-            })}
+          <tbody>
+            {questions.map((data, i) => (
+              <tr key={i}>
+                <td>{data.qname}</td>
+                <td>{data.optionOne}</td>
+                <td>{data.optionTwo}</td>
+                <td>{data.optionThree}</td>
+                <td>{data.optionFour}</td>
+                <td>{data.answer}</td>
+                <td>{data.sname ? data.sname.name : "N/A"}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

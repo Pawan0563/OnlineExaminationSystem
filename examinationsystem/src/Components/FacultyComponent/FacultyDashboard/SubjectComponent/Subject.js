@@ -1,173 +1,124 @@
-
- 
-import style from "./Subject.module.css";
-
-
-import {useState , useEffect} from "react";
-
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import baseUrl from "../../../baseUrl";
+import "./Subject.css";
+// import FacultyNavbar from "../FacultyNavbar/FacultyNavbar";
 
+function Subject() {
+  const [display, setDisplay] = useState(false);
+  const [subjects, setSubjects] = useState([]);
+  const [subjectName, setSubjectName] = useState("");
+  const [status, setStatus] = useState(false);
+  const [statusDelete, setStatusDelete] = useState(false);
 
- 
-    function Subject()
-    {
-
-   //  ---------------------- add Subject & close buttton working  -------------------------------------
-       const [display , setDisplay]  = useState({
-           display:"none"
-       });
-
-        function handleAddSubject()
-        {
-           setDisplay({display:"block"});
-        }
-
-        function handleCloseAdd(){
-            setDisplay({display:"none"});
-        }
-
-    // --------------- Fetching all subjects from db.json file-------------------------
-
-     const [subjects , setSubjects] = useState([]);
-
-        useEffect(()=>{
-           
-           async function getAllSubject(){
-               let value = await axios.get(`${baseUrl}/subject`);
-               setSubjects(value.data);
-                 //console.log(value.data[0]);
-           }
-               getAllSubject();
-        },[]);
-
-    // --------------------Adding Subject And re-render subject component-----------------
-
-     const [subject , setSubject] = useState({
-         name:"",
-     });
-
-    function handleInput(e){
-         setSubject({ 
-             name: e.target.value
-         });
-       //   console.log(subject);
-    }
-
-
-      async function handleAddNewSubject(){
-           await axios.post(`${baseUrl}/subject` , subject);
-           setStatus(true);
-       }
-
-       const [status , setStatus] = useState();
-
-     
-
-   // ------------------------Deleting Subject and reload component------------------------------
-
-      async function deleteSubject(name){
-         await axios.delete(`${baseUrl}/subject/${name}`);
-         setStatusDelete(true);
+  useEffect(() => {
+    async function getAllSubject() {
+      try {
+        const response = await axios.get(`${baseUrl}/subject`);
+        setSubjects(response.data);
+      } catch (error) {
+        console.error("Error fetching subjects:", error);
       }
-
-      const [statusDelete , setStatusDelete] = useState();
-     
-      
-       if(statusDelete) return <Subject />;
-
-       if(status) return <Subject />;
-
-       // -------------------------------------------------------
-
-       if(subjects.length === 0) return(
-                            <>
-                               <div id={style.content}>
-
-                                       <div id={style.displayHeadingBox}> 
-                                             <h2>No Subject Available</h2>     
-                                        </div>
-
-                                      <div id={style.addSubjectBox}>
-                                          <button onClick={handleAddSubject}>Add Subject</button>
-                                      </div>
-
-                                       {/* Add Subject */}
-
-
-                                       <div id={style.addBox} style={display} >   
-                                          <label htmlFor="">Enter Subject </label> 
-                                           <input onChange={(e)=>handleInput(e)}  type="text" placeholder="Enter Subject name" /> 
-
-                                         <div id={style.buttonBox}>
-                                             <button onClick={handleAddNewSubject}  >Add</button>
-                                              <button onClick={handleCloseAdd} >Close</button>
-                                         </div>
-                                  </div>
-
-</div>
-                            </>
-        );
-               
-        return(
-            <>
-           
-           <div id={style.content}>
-
-                 <div id={style.displayHeadingBox}> 
-                     <h2>Subject List</h2>     
-                </div>
-
-                <div id={style.tableBox}>
-                <table class="table table-success table-striped">                        <thead>
-                           <tr>
-                              <th id={style.center}>Subject Name</th>
-                               <th id={style.center}>Options</th>
-                           </tr>
-                        </thead>
-                        <tbody id={style.tbody}>
-                            {
-                                subjects.map((data , i) => {
-                                   return(
-                                       <tr key={i}>
-                                          <td>{data.name}</td>
-                <td><button onClick={ () => deleteSubject(data.name) }>Delete</button></td>
-                                      </tr>
-                                   );
-                                  
-                                })
-                            }
-                            
-
-                        </tbody>
-                    </table>
-                 </div>
-
-                 <div id={style.addSubjectBox}>
-                      <button onClick={handleAddSubject}>Add Subject</button>
-                  </div>
-
-                  {/* Add Subject */}
-
-               
-                  <div id={style.addBox} style={display} >   
-                      <label htmlFor="">Enter Subject </label> 
-                      <input onChange={(e)=>handleInput(e)}  type="text" placeholder="Enter Subject name" /> 
-
-                      <div id={style.buttonBox}>
-                         <button onClick={handleAddNewSubject}  >Add</button>
-                         <button onClick={handleCloseAdd} >Close</button>
-                       </div>
-                  </div>
-                  
-           </div>
-
-
-
-                
-            </>
-        );
     }
+    getAllSubject();
+  }, [status, statusDelete]); // Re-fetch subjects when status or statusDelete changes
 
-    export default Subject;
+  const handleAddSubject = () => {
+    setDisplay(true);
+  };
+
+  const handleCloseAdd = () => {
+    setDisplay(false);
+  };
+
+  const handleInput = (e) => {
+    setSubjectName(e.target.value);
+  };
+
+  const handleAddNewSubject = async () => {
+    try {
+      await axios.post(`${baseUrl}/subject`, { name: subjectName });
+      setStatus(true);
+    } catch (error) {
+      console.error("Error adding subject:", error);
+    }
+  };
+
+  const deleteSubject = async (name) => {
+    try {
+      await axios.delete(`${baseUrl}/subject/${name}`);
+      setStatusDelete(true);
+    } catch (error) {
+      console.error("Error deleting subject:", error);
+    }
+  };
+
+  if (statusDelete || status) return <Subject />; // Reload component after adding or deleting subject
+
+  if (subjects.length === 0) {
+    return (
+        
+      <div id="content" className="content">
+        <div className="displayHeadingBox">
+          <h2>No Subject Available</h2>
+        </div>
+        <div className="addSubjectBox">
+          <button onClick={handleAddSubject}>Add Subject</button>
+        </div>
+        {/* Add Subject */}
+        <div className={`addBox ${display ? "show" : "hide"}`}>
+          <label htmlFor="">Enter Subject</label>
+          <input onChange={handleInput} type="text" placeholder="Enter Subject name" />
+          <div className="buttonBox">
+            <button onClick={handleAddNewSubject}>Add</button>
+            <button onClick={handleCloseAdd}>Close</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+    {/* <FacultyNavbar/> */}
+    <div id="content" className="content">
+      <div className="displayHeadingBox">
+        <h2>Subject List</h2>
+      </div>
+      <div className="tableBox">
+        <table className="table table-success table-striped">
+          <thead>
+            <tr>
+              <th>Subject Name</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {subjects.map((data, i) => (
+              <tr key={i}>
+                <td>{data.name}</td>
+                <td>
+                  <button onClick={() => deleteSubject(data.name)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="addSubjectBox">
+        <button onClick={handleAddSubject}>Add Subject</button>
+      </div>
+      {/* Add Subject */}
+      <div className={`addBox ${display ? "show" : "hide"}`}>
+        <label htmlFor="">Enter Subject</label>
+        <input onChange={handleInput} type="text" placeholder="Enter Subject name" />
+        <div className="buttonBox">
+          <button onClick={handleAddNewSubject}>Add</button>
+          <button onClick={handleCloseAdd}>Close</button>
+        </div>
+      </div>
+    </div>
+    </> );
+}
+
+export default Subject;

@@ -1,54 +1,39 @@
+// Subject.js
 
-   
-   import style from "../StudentDashboard.module.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import baseUrl from "../../../baseUrl";
+import styles from "./Subject.module.css"; // Import CSS module
 
-   import {useState , useEffect} from "react";
-   import axios from "axios";
+function Subject() {
+  const [allSubject, setAllSubject] = useState([]);
 
-   import {NavLink} from "react-router-dom";
+  useEffect(() => {
+    async function getAllSubject() {
+      let value = await axios.get(`${baseUrl}/subject`);
+      setAllSubject(value.data);
+    }
+    getAllSubject();
+  }, []);
 
-   import baseUrl from "../../../baseUrl";
-
-
-   function Subject(){
-
-        const [allSubject , setAllSubject] = useState([]);
-
-        useEffect(() => {
-            async function getAllSubject(){
-                let value = await axios.get(`${baseUrl}/subject`);
-                setAllSubject(value.data);
-            }
-            getAllSubject();
-        },[])
-
-
-       return (
-             <>
-                <div id={style.displayBoxHeadingBox}>
-                     <h1>Choose Subjects</h1>
+  return (
+    <>
+      <div className={styles.displayBoxHeadingBox}>
+        <h1>Choose Subjects</h1>
+      </div>
+      <div className={styles.subjectContainer}>
+            {allSubject.map((data, i) => (
+                <div className={styles.subjectCard} key={i}>
+                    <div className={styles.subjectName}>{data.name}</div>
+                    <NavLink exact to={`/StudentDashboard/Exam/${data.name}`}>
+                        <button className={styles.goToExamButton}>Go to Exam</button>
+                    </NavLink>
                 </div>
+            ))}
+        </div>
+    </>
+  );
+}
 
-                {
-                    allSubject.map((data , i) => {
-                        return (
-                            <div id={style.displayBoxSubjectBox} key={i}>
-
-                               <div id={style.subjectText}>
-                                   <span>{data.name}</span>
-                               </div>
-
-                              <div id={style.subjectButton}>
-                                   <NavLink exact to={`/StudentDsh/Exam/${data.name}`}> 
-                                     <button>Go to Exam</button>
-                                   </NavLink>
-                              </div>
-                         </div>
-                        );
-                    })
-                }
-             </>
-       );
-   }
-
-  export default Subject;
+export default Subject;

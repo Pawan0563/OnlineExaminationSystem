@@ -7,6 +7,7 @@
    import style from "../SubjectComponent/Subject.module.css"
 
    import baseUrl from "../../../baseUrl";
+// import FacultyNavbar from "../FacultyNavbar/FacultyNavbar";
    
 
 
@@ -26,6 +27,7 @@
 
         return (
             <>
+            
                <div id={style.displayHeadingBox}> 
                    <h2>Result List</h2>     
                 </div>

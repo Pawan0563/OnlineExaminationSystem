@@ -1,0 +1,81 @@
+/* Home.module.css */
+/* Home.module.css */
+
+.headerContainer {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto; /* Auto margin for centering */
+  width: 200px; /* Header container width */
+  height: auto; /* Auto height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.headerContainer img {
+  width: 100px; /* Image width */
+  height: 100px; /* Image height */
+  margin-bottom: 10px;
+}
+
+.headerContainer span {
+  font-size: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .headerContainer {
+      width: calc(50% - 40px); /* Adjust width for smaller screens */
+  }
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: #92dd10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  width: 300px; /* Card width */
+  height: 300px; /* Card height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 30px;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* Move card up by 5px on hover */
+  background-color: rgb(202, 124, 69);
+}
+
+.card img {
+  width: 100px; /* Image width */
+  height: 100px; /* Image height */
+  margin-bottom: 10px;
+}
+
+.card span {
+  font-size: 36px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+      width: calc(50% - 40px); /* Adjust width for smaller screens */
+  }
+}

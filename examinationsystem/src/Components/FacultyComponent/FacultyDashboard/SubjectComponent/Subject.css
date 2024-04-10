@@ -1,0 +1,66 @@
+/* Subject.css */
+
+.content {
+    margin: 20px;
+  }
+  
+  .displayHeadingBox {
+    text-align: center;
+  }
+  
+  .addSubjectBox {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .tableBox {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #843838;
+  }
+  
+  .addBox {
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .buttonBox {
+    margin-top: 10px;
+  }
+  
+  .buttonBox button {
+    margin-right: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .table td,
+    .table th {
+      white-space: nowrap;
+    }
+  }
+  

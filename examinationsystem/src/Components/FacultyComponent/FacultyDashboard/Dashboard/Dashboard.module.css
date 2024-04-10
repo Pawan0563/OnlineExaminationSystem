@@ -1,70 +1,108 @@
-#box1,
-#box2,
-#box3{
-  background-color: cyan;
-  height: 200px;
-  width: 32%;
-  float:left;
-  margin-left: 10px;
-  color: white;
-  margin-top: 90px;
-  border-radius: 40px;
-  transition: box-shadow 0.3s ease;
-  margin-bottom: 80px;
+/* Dashboard.module.css */
+/* Define your styles here */
+.dashboardContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../../../Images/image_first.jpg");
+  background-size: cover;
 }
 
-#box1:hover,
-#box2:hover,
-#box3:hover{
-  box-sizing: content-box;
-  background-color: rgb(184, 184, 46);
-  
- 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-
-#box1,
-#box3{
- background-color: rgba(0, 0, 255, 0.6);
+.displayHeadingBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 20px;
 }
 
-#box2{
- background-color:rgb(231, 192, 61);
-}
-
-#box1 p,
-#box2 p,
-#box3 p{
-  font-size:35px;
+.box1,
+.box2,
+.box3 {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
   text-align: center;
+  transition: all 0.3s ease; /* Add transition for smooth 
+  hover effect */
+  height: 400px;
+  width: 300px;
+  margin: 30px auto;
+
+}
+.box1,
+.box2,
+.box3:hover {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: #bceaab;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.3s ease; /* Add transition for smooth 
+  hover effect */
+  height: 400px;
+  width: 300px;
+  border-bottom: 66px;
+
+}
+
+.box1:hover,
+.box2:hover,
+.box3:hover {
+  transform: scale(1.05); /* Increase size on hover */
+  background-color: chartreuse;
+  border-radius: 100px;
+}
+
+.countOfExam,
+.countOfQuestion,
+.countOfUser {
+  font-size: 40px;
+  color: #333;
+  margin: 50px;
+}
+
+.button {
+  padding: 10px 20px;
   margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-
-#box1 button,
-#box2 button,
-#box3 button{
- width: 100%;
- height: 30px;
- text-align: center;
- font-size: 40px;
- background-color: transparent;
- border-color: transparent;
- border-top: 1px solid black;
- color: rgba(255, 255, 255, 0.7);
- outline: 0px;
- font-family: 'Times New Roman', Times, serif;
- margin-top: 30px;
+.button:hover {
+  background-color: #0056b3;
 }
 
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .box1,
+  .box2,
+  .box3 {
+    flex: 0 0 calc(50% - 20px); /* Adjust box width for smaller screens */
+  }
+}
 
-
-
-#box1 button:hover,
-#box2 button:hover,
-#box3 button:hover{
-  color: rgb(21, 182, 21);
-  cursor:pointer;
-  height: 20px;
-  box-shadow: inset;
+@media screen and (max-width: 480px) {
+  .box1,
+  .box2,
+  .box3 {
+    flex: 0 0 calc(100% - 20px); /* Adjust box width to occupy full width on smallest screens */
+  }
 }
