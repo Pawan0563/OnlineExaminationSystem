@@ -1,69 +1,59 @@
-
-
-   import axios from "axios";
-   import React, {useState , useEffect} from "react"; 
-
-   
-   import style from "../StudentDashboard.module.css";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import style from "./Result.module.css"; // Import the module CSS file
 import baseUrl from "../../../baseUrl";
 
-
 function Result() {
+  const [results, setResults] = useState([]);
 
-    const [results , setResults] = useState([]);
+  useEffect(() => {
+    async function fetchResults() {
+      try {
+        const response = await axios.get(`${baseUrl}/result`); // Adjust the endpoint URL accordingly
+        setResults(response.data);
+      } catch (error) {
+        console.error("Error fetching results:", error);
+      }
+    }
 
-     useEffect(()=>{    
-        async function getAllResults(){
-            let value = await axios.get(`${baseUrl}/result`);
-            setResults(value.data);
-        }
-            getAllResults();
-     },[]);
+    fetchResults();
+  }, []);
 
-
-    return (
-        <>
-            <div id={style.displayHeadingBox}>
-                <h2>Student Exam List</h2>
-            </div>
-            <div id={style.tableBox}>
-                <table >
-                    <thead>
-                        <tr>
-                             <th id={style.center}>User Email</th>
-                             <th id={style.center}>Exam Name</th>
-                             <th id={style.center}>Exam Date</th>
-                             <th id={style.center}>Result Status</th>
-                             <th id={style.center}>Your Score</th>  
-                             <th id={style.center}>Total Marks</th>
-                             <th id={style.center}>Total Question</th>  
-                        </tr>
-                    </thead>
-                    <tbody >
-                    {
-                        results.map((data , i) => {
-                                if( data.user_email === sessionStorage.getItem("user"))
-                                    return(
-                                          <tr key={i}>
-                                              <td>{data.user_email}</td>
-                                              <td>{data.exam_name}</td>
-                                              <td>{data.exam_date}</td>
-                                              <td>{data.result_status}</td>
-                                              <td>{data.result_score}</td>
-                                              <td>{data.total_marks}</td>
-                                              <td>{data.total_Question}</td>
-                                          </tr>
-                                    );
-
-                                    return <React.Fragment key={i}></React.Fragment>
-                                })
-                            }
-
-                    </tbody>
-                </table>
-            </div>
-        </>
-    );
+  return (
+    <div className={style.container}> {/* Add the container class */}
+      <h2>Results</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Score</th>
+            <th>Exam Date</th>
+            <th>Total Marks</th>
+            <th>Total Questions</th>
+            <th>Subject Name</th>
+            <th>User Email</th>
+            <th>Exam ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {results.map((result) => (
+            <tr key={result.id}>
+              <td>{result.id}</td>
+              <td>{result.status}</td>
+              <td>{result.score}</td>
+              <td>{result.edate}</td>
+              <td>{result.totalMarks}</td>
+              <td>{result.totalQuestion}</td>
+              <td>{result.sname ? result.sname.name : ""}</td> {/* Conditional rendering for subject name */}
+              <td>{result.email ? result.email.email : ""}</td> {/* Conditional rendering for user email */}
+              <td>{result.examId ? result.examId.id : ""}</td> {/* Conditional rendering for exam ID */}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default Result;

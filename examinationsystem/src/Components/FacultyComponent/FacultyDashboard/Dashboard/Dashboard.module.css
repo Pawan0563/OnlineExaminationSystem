@@ -27,17 +27,17 @@
 }
 
 .box1,
-.box2,
-.box3 {
+.box1,
+.box1 {
   flex: 1;
   margin: 10px;
   padding: 20px;
   background-color: #f0f0f0;
-  border-radius: 5px;
+  border-radius: 35px;
   text-align: center;
   transition: all 0.3s ease; /* Add transition for smooth 
   hover effect */
-  height: 400px;
+  height: 300px;
   width: 300px;
   margin: 30px auto;
 
@@ -106,3 +106,6 @@
     flex: 0 0 calc(100% - 20px); /* Adjust box width to occupy full width on smallest screens */
   }
 }
+
+
+

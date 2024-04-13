@@ -14,19 +14,19 @@ function Dashboard() {
   useEffect(() => {
     async function getAllExam() {
       let value = await axios.get(`${baseUrl}/exam`);
-      setExam("We have Total " + value.data.length + " exam");
+      setExam("We have Total " + value.data.length + " Exam");
     }
     getAllExam();
 
     async function getAllQuestions() {
       let value = await axios.get(`${baseUrl}/question`);
-      setQuestion("We have Total " + value.data.length + " question");
+      setQuestion("We have Total " + value.data.length + " Question");
     }
     getAllQuestions();
 
     async function getAllUsers() {
       let value = await axios.get(`${baseUrl}/users/`);
-      setUser("We have Total " + value.data.length + " user");
+      setUser("We have Total " + value.data.length + " User");
     }
     getAllUsers();
   }, []);
@@ -54,12 +54,12 @@ function Dashboard() {
             <button  className={style.button} onClick={showExam}>View Details</button>
           </div>
 
-          <div className={style.box2}>
+          <div className={style.box1}>
             <p className={style.countOfQuestion}>{question}</p>
             <button className={style.button} onClick={showQuestions}>View Details</button>
           </div>
 
-          <div className={style.box3}>
+          <div className={style.box1}>
             <p className={style.countOfUser}>{user}</p>
             <button className={style.button} onClick={showUsers}>View Details</button>
           </div>

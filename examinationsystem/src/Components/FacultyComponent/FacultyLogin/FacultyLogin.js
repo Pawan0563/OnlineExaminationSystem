@@ -1,8 +1,11 @@
+// FacultyLogin.js
+
 import React, { useState } from 'react';
 import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput } from 'mdb-react-ui-kit';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import baseUrl from '../../baseUrl';
+import style from './FacultyLogin.module.css';
 
 function FacultyLogin() {
   const [credentials, setCredentials] = useState({
@@ -24,7 +27,6 @@ function FacultyLogin() {
         alert('Login Successful');
         navigate('/Facultydsh');
       } else {
-
         alert('Login Failed: Incorrect email or password');
       }
     } catch (error) {
@@ -34,52 +36,54 @@ function FacultyLogin() {
   };
 
   return (
-    
-    <MDBContainer fluid>
-      <MDBRow className='d-flex justify-content-center align-items-center h-100'>
-        <MDBCol col='12'>
-          <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '500px' }}>
-            <MDBCardBody className='p-5 w-100 d-flex flex-column'>
-              <h2 className='fw-bold mb-2 text-center'>Faculty Sign in</h2>
-              <p className='text-white-50 mb-3'>Please enter your login and password!</p>
-              <MDBInput
-                wrapperClass='mb-4 w-100'
-                id='email'
-                name='email'
-                type='email'
-                value={credentials.email}
-                onChange={handleInput}
-                label='Email'
-                size='lg'
-              />
-              <MDBInput
-                wrapperClass='mb-4 w-100'
-                id='password'
-                name='password'
-                type='password'
-                value={credentials.password}
-                onChange={handleInput}
-                label='Password'
-                size='lg'
-              />
-              <MDBBtn size='lg' onClick={login}>
-                Login
-              </MDBBtn>
-              <hr className='my-4' />
-              <MDBBtn className='mb-2 w-100' size='lg' style={{ backgroundColor: '#de9b39' }}>
+    <div className={style.container}>
+      <MDBContainer fluid>
+        <MDBRow className='justify-content-center align-items-center h-100'>
+          <MDBCol sm='12' md='6'>
+            <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem' }}>
+              <MDBCardBody className='p-5'>
+                <h2 className='fw-bold mb-4 text-center'>Faculty Sign in</h2>
+                <p className='text-center text-muted mb-4'>Please enter your login and password!</p>
+                <MDBInput
+                  wrapperClass='mb-4'
+                  id='email'
+                  name='email'
+                  type='email'
+                  value={credentials.email}
+                  onChange={handleInput}
+                  label='Email'
+                  size='lg'
+                />
+                <MDBInput
+                  wrapperClass='mb-4'
+                  id='password'
+                  name='password'
+                  type='password'
+                  value={credentials.password}
+                  onChange={handleInput}
+                  label='Password'
+                  size='lg'
+                />
+                <div className='d-grid gap-2'>
+                  <MDBBtn onClick={login} size='lg'>
+                    Login
+                  </MDBBtn>
+                 
+                  <MDBBtn color='danger' size='lg'>
+                    Sign in with Google
+                  </MDBBtn>
+                </div>
                 <NavLink exact to='/FacultySignup'>
-                  Register Here
-                </NavLink>
-              </MDBBtn>
-              <MDBBtn className='mb-2 w-100' size='lg' style={{ backgroundColor: '#dd4b39' }}>
-                Sign in with Google
-              </MDBBtn>
-             
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+                    <MDBBtn color='warning' size='lg'>
+                      Register Here
+                    </MDBBtn>
+                  </NavLink>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </div>
   );
 }
 

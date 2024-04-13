@@ -53,6 +53,12 @@ function StudentNavbar() {
                 <span class="sr-only">(current)</span>
               </Link>
             </li>
+            <li class="nav-item active mr-5 ">
+              <Link class="nav-link" to="/StudentDsh/Subject">
+                <h4>Registration</h4>
+                <span class="sr-only">(current)</span>
+              </Link>
+            </li>
 
             <li class="nav-item active mr-5 ">
               <Link class="nav-link" to="/StudentDsh/Result">
