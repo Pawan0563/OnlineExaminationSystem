@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import baseUrl from "../../../baseUrl";
 import "./Subject.css";
+import FacultyNavbar from "../FacultyNavbar/FacultyNavbar";
 // import FacultyNavbar from "../FacultyNavbar/FacultyNavbar";
 
 function Subject() {
@@ -15,11 +16,14 @@ function Subject() {
     async function getAllSubject() {
       try {
         const response = await axios.get(`${baseUrl}/subject`);
-        setSubjects(response.data);
+        // Filter out any null subjects
+        const filteredSubjects = response.data.filter(subject => subject !== null);
+        setSubjects(filteredSubjects);
       } catch (error) {
         console.error("Error fetching subjects:", error);
       }
     }
+    
     getAllSubject();
   }, [status, statusDelete]); // Re-fetch subjects when status or statusDelete changes
 
@@ -80,7 +84,7 @@ function Subject() {
 
   return (
     <>
-    {/* <FacultyNavbar/> */}
+     <FacultyNavbar/> 
     <div id="content" className="content">
       <div className="displayHeadingBox">
         <h2>Subject List</h2>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import style from "./Result.module.css"; // Import the module CSS file
+import style from "./Result.module.css";
 import baseUrl from "../../../baseUrl";
 
 function Result() {
@@ -9,8 +9,9 @@ function Result() {
   useEffect(() => {
     async function fetchResults() {
       try {
-        const response = await axios.get(`${baseUrl}/result`); // Adjust the endpoint URL accordingly
+        const response = await axios.get(`${baseUrl}/result`); 
         setResults(response.data);
+        console.log(response.data)
       } catch (error) {
         console.error("Error fetching results:", error);
       }
@@ -20,7 +21,7 @@ function Result() {
   }, []);
 
   return (
-    <div className={style.container}> {/* Add the container class */}
+    <div className={style.container}> 
       <h2>Results</h2>
       <table>
         <thead>
@@ -45,9 +46,9 @@ function Result() {
               <td>{result.edate}</td>
               <td>{result.totalMarks}</td>
               <td>{result.totalQuestion}</td>
-              <td>{result.sname ? result.sname.name : ""}</td> {/* Conditional rendering for subject name */}
-              <td>{result.email ? result.email.email : ""}</td> {/* Conditional rendering for user email */}
-              <td>{result.examId ? result.examId.id : ""}</td> {/* Conditional rendering for exam ID */}
+              <td>{result.sname ? result.sname.name : ""}</td> 
+              <td>{result.email ? result.email.email : ""}</td>
+              <td>{result.examId ? result.examId.id : ""}</td> 
             </tr>
           ))}
         </tbody>

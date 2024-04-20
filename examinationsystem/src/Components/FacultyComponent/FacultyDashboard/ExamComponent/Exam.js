@@ -5,9 +5,10 @@
    import {NavLink} from "react-router-dom";
 
 
-    import "./Exam.css"
+    import style from "./Exam.module.css"
 
     import baseUrl from "../../../baseUrl";
+import FacultyNavbar from "../FacultyNavbar/FacultyNavbar";
 
     function Exam(){
 
@@ -114,11 +115,12 @@
 
         return (
             <>
-               <div id="hd"> 
+            <FacultyNavbar/>
+               <div id={style.hd}> 
                     <h2>Exam List</h2>     
                </div>
 
-                <div id="tb">
+                <div id={style.td}>
                 <table class="table table-success table-striped">
                         <thead >
                             <tr>
@@ -129,7 +131,7 @@
                                 <th className="cc">Options</th>
                             </tr>
                           </thead>
-                          <tbody id="tbod">
+                          <tbody id={style.tbody}>
                               {
                                   exams.map((data ,i) => {
                                       return(
@@ -140,18 +142,18 @@
                                            <td>{data.level}</td>
                                            <td>
                                                <NavLink exact to={`/FacultyDashboard/Exam/Details/${data.id}`}>
-                                                 <button className="bb">Details</button>  
+                                                 <button className={style.bb}>Details</button>  
                                                </NavLink> 
 
                                           <NavLink exact to={`/FacultyDashboard/Exam/ViewQuestion/${data.id}`}>
-                                                 <button  className="bb">View Question</button>  
+                                                 <button className={style.bb}>View Question</button>  
                                                </NavLink> 
 
                                              <NavLink exact to={`/FacultyDashboard/Exam/AddQuestion/${data.id}`}>
-                                                 <button className="bb">  Add Question</button>  
+                                                 <button className={style.bb}>  Add Question</button>  
                                                </NavLink> 
 
-                                             <button  className="bb" onClick={() => deleteExam(data.id)}>Delete</button>
+                                             <button className={style.bb} onClick={() => deleteExam(data.id)}>Delete</button>
                                           </td>
                                         </tr>
                                       );
@@ -162,13 +164,13 @@
                      </table>
                  </div>
 
-                 <div id="addSubjectBox">
+                 <div id={style.addSubjectBox}>
                       <button onClick={handleAddExam}>Add Exam</button>
                  </div>
 
-                  <div id="addBox12" style={display}>   
+                  <div id={style.addBox12} style={display}>   
                      <label htmlFor="">Enter Subject Name </label>
-                     <input id="nameFiled" onChange={(e) => handleInput(e)} name="name" type="text" 
+                     <input id={style.nameFiled} onChange={(e) => handleInput(e)} name="name" type="text" 
                      placeholder="Enter Subject Name" /> 
 
                      <label htmlFor="">Enter Exam desc </label>
@@ -190,7 +192,7 @@
                      <input onChange={(e) => handleInput(e)} name="passMarks"   
                      type="text" placeholder="Enter Pass Marks" /> 
 
-                      <div id="buttonBox76">
+                      <div id={style.buttonBox76}>
                          <button  className="b12" onClick={handleAddNewExam} >Add</button>
                          <button  className="b12" onClick= {handleCloseExam}  >Close</button>
                        </div>

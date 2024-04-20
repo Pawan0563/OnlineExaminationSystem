@@ -43,6 +43,7 @@ import About from "./Components/HomeComponent/about/About";
 import Team from "./Components/HomeComponent/team/Team"
 import Developer from "./Components/HomeComponent/developer/Developer"
 import Contact from "./Components/HomeComponent/contact/Contact"
+import CourseCard from "./Components/StudentComponent/StudentDashboard/CourseComponent/CourseCard";
 
 function App() {
   return (
@@ -134,19 +135,11 @@ function App() {
           path="/FacultyDashboard/Question"
           element={<Question />}
         ></Route>
-        <Route exact path="/StudentDsh/Result" component={Result}></Route>
-{/* 
         <Route
           exact
-          path="/StudentDsh/Exam/:category"
-          component={SExam}
+          path="/Registration"
+          element={<CourseCard />}
         ></Route>
-
-        <Route
-          exact
-          path="/StudentDsh/Exam/:category/:id"
-          component={Test}
-        ></Route> */}
 
 
 <Route exact path="/StudentDashboard/Exam/:category" element={<SExam/>} ></Route>

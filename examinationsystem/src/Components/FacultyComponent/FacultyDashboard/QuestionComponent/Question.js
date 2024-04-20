@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import baseUrl from "../../../baseUrl";
 import "./Question.css";
+import FacultyNavbar from "../FacultyNavbar/FacultyNavbar";
 // import FacultyNavbar from "../FacultyNavbar/FacultyNavbar";
 
 function Question() {
@@ -21,7 +22,7 @@ function Question() {
 
   return (
     <>
-    {/* <FacultyNavbar/> */}
+     <FacultyNavbar/> 
       <div className="questionListHeading">
         <h2>Question List</h2>
       </div>
