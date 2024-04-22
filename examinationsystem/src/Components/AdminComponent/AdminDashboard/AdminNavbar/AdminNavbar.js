@@ -33,12 +33,7 @@ function AdminNavbar() {
 
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
           <ul class="navbar-nav  ">
-            <li class="nav-item active  mr-5 ">
-              <Link class="nav-link " to="/">
-                <h4>Home</h4>
-                <span class="sr-only">(current)</span>
-              </Link>
-            </li>
+            
 
             <li class="nav-item active mr-5 ">
               <Link class="nav-link" to="/AdminDashboard">
@@ -56,6 +51,18 @@ function AdminNavbar() {
             <li class="nav-item active mr-5 ">
               <Link class="nav-link" to="/ManageStudent">
                 <h4>ManageStudents</h4>
+                <span class="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li class="nav-item active mr-5 ">
+              <Link class="nav-link" to="/ManageCourse">
+                <h4>ManageCourses</h4>
+                <span class="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li class="nav-item active mr-5 ">
+              <Link class="nav-link" to="/ManageCourse">
+                <h4>See Result</h4>
                 <span class="sr-only">(current)</span>
               </Link>
             </li>

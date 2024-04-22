@@ -1,0 +1,40 @@
+.course-selection {
+    max-width: 600px;
+    /* Adjust max-width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.semester-selection,
+.section-selection {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+@media (min-width: 768px) {
+    .course-selection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .semester-selection,
+    .section-selection {
+        flex: 1 0 45%;
+        /* Adjust flex values as needed */
+    }
+}

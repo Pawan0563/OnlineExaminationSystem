@@ -44,6 +44,8 @@ import Team from "./Components/HomeComponent/team/Team"
 import Developer from "./Components/HomeComponent/developer/Developer"
 import Contact from "./Components/HomeComponent/contact/Contact"
 import CourseCard from "./Components/StudentComponent/StudentDashboard/CourseComponent/CourseCard";
+import AddCourse from "./Components/AdminComponent/ManageCourse/addcourse/AddCourse"
+import ManageCourse from "./Components/AdminComponent/ManageCourse/ManageCourse"
 
 function App() {
   return (
@@ -78,6 +80,8 @@ function App() {
         <Route path="/StudentDsh" element={<StudentDsh />}></Route>
         <Route path="/ManageStudent" element={<ManageStudent />} />
         <Route path="/ManageFaculty" element={<ManageFaculty />} />
+        <Route path="/AddCourse" element={<AddCourse/>}/>
+        <Route path="/ManageCourse" element={<ManageCourse/>}/>
 
         <Route
           path="/FacultyDashboards"

@@ -1,0 +1,172 @@
+/* Form styles */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.container {
+    width: 90%; /* Use percentage-based width */
+    max-width: 400px; /* Limit the maximum width */
+    height: 400px;
+    background-color: rgb(226, 195, 195);
+    justify-content: center;
+    margin: 40px auto 20px; /* Center the container horizontally and adjust top and bottom margins */
+  }
+  
+  /* Adjust margins for smaller screens */
+  @media (max-width: 768px) {
+    .container {
+      margin: 40px auto 20px; /* Adjust margins for smaller screens */
+    }
+  }
+  
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"],
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover,
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Course card styles */
+.course-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.course-card h3 {
+    margin-top: 0;
+}
+
+.course-card p {
+    margin: 5px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+    .form-container {
+        padding: 10px;
+        max-width: 300px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        padding: 8px;
+    }
+
+    button[type="submit"],
+    button {
+        padding: 8px 16px;
+    }
+}
+
+/* AddCourse.module.css */
+
+.course-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .course-card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .button-container button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button-container button:hover {
+    opacity: 0.8;
+  }
+  
+  .confirmation-dialog {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .confirmation-dialog p {
+    margin-bottom: 10px;
+  }
+  
+  .confirmation-dialog button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .confirmation-dialog button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  @media (max-width: 768px) {
+    .course-card {
+      padding: 15px;
+    }
+  
+    .button-container {
+      flex-direction: column;
+    }
+  
+    .button-container button {
+      margin-top: 10px;
+      width: 100%;
+    }
+  
+    .confirmation-dialog {
+      padding: 15px;
+    }
+  }
+  

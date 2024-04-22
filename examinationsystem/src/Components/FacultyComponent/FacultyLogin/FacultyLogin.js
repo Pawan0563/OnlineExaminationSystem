@@ -36,7 +36,7 @@ function FacultyLogin() {
   };
 
   return (
-    <div className={style.container}>
+    <div className={style.containers}>
       <MDBContainer fluid>
         <MDBRow className='justify-content-center align-items-center h-100'>
           <MDBCol sm='12' md='6'>

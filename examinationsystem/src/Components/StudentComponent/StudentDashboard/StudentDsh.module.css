@@ -1,0 +1,33 @@
+.CardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    flex-direction: row;
+  }
+  
+  /* Define image style */
+  .CardContainer .student-card {
+    width: 100px; /* Set initial width */
+    margin: 10px; /* Add margin */
+    transition: width 0.3s ease; /* Add transition for smoother resizing */
+  }
+  
+  /* Apply hover effect */
+  .CardContainer .student-card:hover {
+    width: 100px; /* Increase width on hover */
+  }
+  
+  /* Make the component responsive */
+  @media (max-width: 768px) {
+    .CardContainer .student-card {
+      width: calc(50% - 20px); /* Set width to 50% on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .CardContainer .student-card {
+      width: calc(100% - 20px); /* Set width to 100% on even smaller screens */
+    }
+  }
+  

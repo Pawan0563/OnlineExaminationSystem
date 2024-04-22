@@ -48,4 +48,23 @@
   .manage-student .view-button:hover {
     background-color: #005f7f;
   }
+  .btn {
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
   
+  .btn-success {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .btn-success:hover,
+  .btn-danger:hover {
+    opacity: 0.9;
+  }
